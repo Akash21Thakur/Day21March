@@ -8,7 +8,7 @@ import { MainContainer } from "../../hocs/withSideTopNavbar/styleComponents";
 
 const VideoPlayerDiv = (props: any) => {
     const params=useParams();
-    // console.log(prams);
+    // console.log(params);
     return <>
       {/* <TopNavBar />
       <MainContainer>

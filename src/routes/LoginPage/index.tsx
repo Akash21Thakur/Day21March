@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { LIGHT_THEME_LOGO } from "../../constants/logos";
+import { DARK_THEME_LOGO, LIGHT_THEME_LOGO } from "../../constants/logos";
 import { ErrorMessage, LoginForm } from "./styleComponent";
 import { Navigate, useNavigate } from "react-router";
 
 // import {redirect} from 'react-router-dom';
 import { LOGIN_API_URL } from "../../constants/api_url";
 import Cookies from "js-cookie";
+import { inject, observer } from "mobx-react";
+import ThemeStore from "../../stores/themeStore";
 // import Cookies from "js-cookie";
+interface Props{}
+interface InjectedProps extends Props {
+  themeStore: ThemeStore
+}
 
 
-
-
-const LoginPage = (props : any) => {
+const LoginPage = inject('themeStore')(observer((props : any) => {
   const [userDetails, setDetails] = useState({
     username: "",
     password: "",
@@ -27,7 +31,7 @@ const LoginPage = (props : any) => {
   const [show, showPassword] = useState<boolean>(false);
   // const show=true;
 
-
+  const {themeStore} =  props as InjectedProps;
  
   const navigate=useNavigate();
   const handleSubmit = async (event: any) => {
@@ -105,7 +109,7 @@ const LoginPage = (props : any) => {
     <>
       <LoginForm>
         <div className="login-div">
-          <img src={LIGHT_THEME_LOGO} alt="nxtwatch-logo" />
+        <img src={themeStore.isDark ? DARK_THEME_LOGO : LIGHT_THEME_LOGO} />
           <form onSubmit={handleSubmit}>
             <label>USERNAME</label>
             <br />
@@ -143,7 +147,7 @@ const LoginPage = (props : any) => {
       </LoginForm>
     </>
   );
-};
+}))
 
 export default LoginPage;
 

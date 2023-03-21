@@ -1,4 +1,4 @@
-const HomeVideoDummyData = [
+export const HomeVideoDummyData = [
   {
     channel: {
       name: "iB Cricket",
@@ -15,4 +15,6 @@ const HomeVideoDummyData = [
   },
 ];
 
-export default HomeVideoDummyData;
+
+
+// export default HomeVideoDummyData;

@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { HomeVideoModel } from "../../stores/model/homeVideoModel";
+import { Views } from "../GamingVideoCard/styleComponent";
+import { ChannelName } from "../TrendingVideoCard/styleComponent";
 // import {HomeVideoModel} from "../../stores/model/homeVideoModel";
-import {ViewsAndDateDiv,VideoTitle,VideoChannelDetails,VideoDescription, VideoCardMainDiv } from "./styleComponent";
+import {ViewsAndDateDiv,VideoTitle,VideoChannelDetails,VideoDescription, VideoCardMainDiv, ThumbnailDiv, ChannelIcon } from "./styleComponent";
 interface Props{
     key: string;
 }
@@ -19,17 +21,17 @@ const HomeVideoCard = (props: any) => {
     
   <Link to={`/videos/${data.id}`} className='link'>
       <VideoCardMainDiv>
-           <img src={data.thumbnailUrl} alt='#'></img>
+           <ThumbnailDiv src={data.thumbnailUrl} alt='#' />
            <VideoDescription>
-            <img src={data.channel.profileImageUrl}></img>
+            <ChannelIcon src={data.channel.profileImageUrl}/>
            <VideoChannelDetails>
                <VideoTitle>{data.title}</VideoTitle>
-               <div>{data.channel.name}</div>
-               <ViewsAndDateDiv>
-                <div>{data.viewCount}</div>
-                <div>.</div>
-                <div>{data.publishedAt}</div>
-               </ViewsAndDateDiv>
+               <ChannelName>{data.channel.name}</ChannelName>
+               {/* <ViewsAndDateDiv> */}
+                <Views>{data.viewCount} views . {data.publishedAt}</Views>
+                {/* <div>.</div> */}
+                {/* <div></div> */}
+               {/* </ViewsAndDateDiv> */}
            </VideoChannelDetails>
            </VideoDescription>
       </VideoCardMainDiv>

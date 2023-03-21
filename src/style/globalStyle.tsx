@@ -34,7 +34,7 @@ export const GlobalStyle =  createGlobalStyle `
 
 
 export const darkTheme: DefaultTheme = {
-    color: '#e7dede',
+    color: '#a19696',
     background_color: '#2b2727'
 }
 

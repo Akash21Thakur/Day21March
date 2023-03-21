@@ -33,17 +33,23 @@ export const IconTextDiv = styled.div`
   cursor: pointer;
   text-decoration: none;
 
-  i {
-    width: 18px;
-    height: 16px;
-    padding: 4px;
-    color: grey;
-  }
+ 
 
   div {
     padding-left: 16px;
     
   }
 `;
+
+export const Icon = styled.i`
+  width: 18px;
+    height: 16px;
+    padding: 4px;
+    color: grey;
+`
+
+export const PageName= styled.div`
+  
+`
 
 

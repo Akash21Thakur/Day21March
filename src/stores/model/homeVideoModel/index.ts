@@ -9,7 +9,7 @@ import { ChannelType, VideoDetailChannelType } from "../homeChannelType";
   title: string;
   thumbnailUrl: string;
   viewCount: string;
-  isSaved: boolean=false;
+  isSaved: boolean=true;
   isLiked: boolean=false;
   isDisliked: boolean=false;
 
@@ -54,7 +54,7 @@ import { ChannelType, VideoDetailChannelType } from "../homeChannelType";
 } 
 
 export class HomeVideoModel extends BaseVideoModel {
-  channel: VideoDetailChannelType;
+  channel?: VideoDetailChannelType;
   publishedAt: string;
   description: string;
   videoUrl: string;
@@ -64,9 +64,9 @@ export class HomeVideoModel extends BaseVideoModel {
     // console.log(datas.channel);
 
     //    this.channel.name
-    this.channel = new VideoDetailChannelType(datas.channel);
+    this.channel = datas.channel && new VideoDetailChannelType(datas.channel) ;
 
-    this.publishedAt = datas.published_at;
+    this.publishedAt = datas.published_at ?  datas.published_at : "";
     this.description=datas.description ? datas.description : '';
     this.videoUrl = datas.video_url ? datas.video_url : '';
   }

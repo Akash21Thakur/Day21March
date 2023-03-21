@@ -1,9 +1,11 @@
 import { inject, observer } from "mobx-react";
 import { useEffect } from "react";
-import HomeVideoDummyData from "../../fixtures/homeVideoFixture";
+import { HomeVideoDummyData } from "../../fixtures/homeVideoFixture";
 // import { MainContainer } from "../../routes/HomePage/styleComponents";
 import HomeVideosStore from "../../stores/homeVideoStore";
 import { HomeVideoModel } from "../../stores/model/homeVideoModel";
+import Banner from "../Banner";
+import { Icon } from "../EachPageDiv/styleComponent";
 // import HomeVideoModel from "../../stores/model/homeVideoModel";
 import HomeVideoCard from "../HomeVideoCard";
 import NoVideosComponent from "../NoVideosComponent";
@@ -12,6 +14,8 @@ import {
   HomeVideosMainDiv,
   Wrapper,
   SearchWithIcon,
+  SearchIconDiv,
+  SearchIcon,
 } from "./styledComponent";
 
 interface Props {}
@@ -21,34 +25,36 @@ interface InjectedProps extends Props {
 }
 
 const HomePageContent = inject("homeVideosStore")(
-  observer((props: Props) => {
-    const { homeVideosStore } = props as InjectedProps;
+  observer((props: any) => {
+    const { homeVideosStore } = props;
 
     // const updatedHomeVideosList=HomeVideoDummyData;
     const handleSearch = (event: any) => {
+      // console.log(homeVideosStore.completeVideoList);
       homeVideosStore.updateSearchedText(event.target.value);
       //  {console.log(homeVideosStore.searchedText)}
     };
 
-    // useEffect(()=>{https://youtu.be/qVmaFOjrZJY
-    //   homeVideosStore.getVideoList('home');
-    // },[])
+    useEffect(() => {
+      homeVideosStore.fetchHomeVideoList();
+    }, []);
+
     const renderHistoryList = () => {
       const updatedHomeVideosList = homeVideosStore.homeVideoListFn;
- 
+
       return (
         <>
-          {updatedHomeVideosList && (updatedHomeVideosList.length > 0 ? (
-            updatedHomeVideosList.map((each: HomeVideoModel) => {
-              return <HomeVideoCard key={each.id} data={each} />;
-            })
-          ) : (
-            <NoVideosComponent />
-          ))}
+          {updatedHomeVideosList &&
+            (updatedHomeVideosList.length > 0 ? (
+              updatedHomeVideosList.map((each: HomeVideoModel) => {
+                return <HomeVideoCard key={each.id} data={each} />;
+              })
+            ) : (
+              <NoVideosComponent />
+            ))}
         </>
       );
     };
-
 
     const renderLoader = () => {
       return <div>Loading</div>;
@@ -60,15 +66,16 @@ const HomePageContent = inject("homeVideosStore")(
     <input type='search' value={homeVideosStore.searchedText} onChange={e => handleSearch(e)}/> */}
         {/* {console.log(homeVideosStore.homeVideosList)} */}
         <Wrapper>
+          <Banner />
           <SearchWithIcon>
             <SearchVideos
               type="search"
               value={homeVideosStore.searchedText}
               onChange={(event) => handleSearch(event)}
             />
-            <div className="search-icon">
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </div>
+            <SearchIconDiv className="search-icon">
+              <SearchIcon className="fa-solid fa-magnifying-glass" />
+            </SearchIconDiv>
           </SearchWithIcon>
 
           <HomeVideosMainDiv>

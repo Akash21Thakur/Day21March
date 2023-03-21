@@ -14,17 +14,27 @@ export const ContactCont = styled.div`
     }
 `
 
+export const ContactUsDiv = styled.div`
+    
+`
+export const ContactDescConatiner = styled.div`
+    
+`
+
 export const MediaHandles = styled.div`
     display: flex;
     justify-content: flex-start;
     
 
-    img{
-        width:30px;
-        padding: 12px;
-        padding-left: 0px;
-        cursor: pointer;
-    }
+    
+    
+    
+    `
 
+export const ImageContainer = styled.img`
+width:30px;
+padding: 12px;
+padding-left: 0px;
+cursor: pointer;
     
 `

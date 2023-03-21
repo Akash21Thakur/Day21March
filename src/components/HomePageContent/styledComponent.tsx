@@ -32,14 +32,19 @@ export const SearchWithIcon = styled.div`
     padding: 3px;
     cursor: pointer;
   }
-
-  i {
-    font-size: 14px;
-  }
-`;
+  `;
 
 export const SearchVideos = styled.input`
   width: 260px;
   outline: none;
   /* border-radius: 0px; */
-`;
+  `;
+
+export const SearchIconDiv= styled.div`
+font-size: 14px;
+  
+`
+
+export const SearchIcon = styled.i`
+  
+`

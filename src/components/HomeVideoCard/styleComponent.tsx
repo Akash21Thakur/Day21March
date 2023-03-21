@@ -11,6 +11,10 @@ export const VideoCardMainDiv= styled.div`
     text-decoration: none;
 `
 
+export const ThumbnailDiv = styled.img`
+    
+`
+
 export const VideoDescription= styled.div`
     display: flex;
     flex-direction: row;
@@ -21,6 +25,9 @@ export const VideoDescription= styled.div`
         width:40px;
         margin-right:12px;
     }
+`
+export const ChannelIcon = styled.img`
+    
 `
 
 export const VideoChannelDetails= styled.div`

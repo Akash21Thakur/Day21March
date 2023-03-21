@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { action, computed, makeObservable, observable } from "mobx";
+import { action, computed, makeObservable, observable, toJS } from "mobx";
 import {
   GAMING_VIDEOS_API_URL,
   HOME_VIDEOS_API_URL,
@@ -16,7 +16,9 @@ class HomeVideosStore {
   gamingVideosList!: BaseVideoModel[];
   searchedText: string = "";
   filteredList!: HomeVideoModel[];
-  isLoading!: boolean;
+  isLoading: boolean = true;
+  videoList!: HomeVideoModel[];
+  // savedVideoList: HomeVideoModel[] = [];
 
   constructor() {
     makeObservable(this, {
@@ -26,14 +28,19 @@ class HomeVideosStore {
       isLoading: observable,
       searchedText: observable,
       homeVideoListFn: computed,
-      savedVideosListFn: computed,
+      // savedVideosListFn: computed,
       updateSearchedText: action,
       fetchHomeVideoList: action,
+      completeVideoList: computed,
+      savedVideoList: computed,
+      // videoList: observable
     });
-
-    this.fetchHomeVideoList();
-    this.fetchTrendingVideoList();
+    // console.log("akash");
+    // this.fetchHomeVideoList();
+    // this.fetchTrendingVideoList();
     this.fetchGamingVideoList();
+
+    // console.log(this.videoList);
     // this.filteredList=this.homeVideosList
   }
 
@@ -42,7 +49,7 @@ class HomeVideosStore {
   }
 
   fetchGamingVideoList = async () => {
-    this.isLoading = true;
+    // this.isLoading = true;
     const token = Cookies.get("jwt_token");
     // console.log(token);
     const option = {
@@ -55,14 +62,14 @@ class HomeVideosStore {
       const response = await fetch(GAMING_VIDEOS_API_URL, option);
       const data = await response.json();
       if (response.ok) {
-        this.isLoading = false;
         const temp = data.videos;
         // console.log(temp);
         this.gamingVideosList = data.videos.map(
-          (each: BaseFetchedVideoDetails) => new BaseVideoModel(each)
-        );
+          (each: FetchedHomeDetails) => new HomeVideoModel(each)
+          );
+          console.log(toJS(this.gamingVideosList));
+          this.isLoading = false;
         // new HomeVideoModel(data.videos)
-        // console.log(this.homeVideosList);
       } else {
         // this.homeVideosList = [];
         console.log(data.error_msg);
@@ -73,7 +80,7 @@ class HomeVideosStore {
   };
 
   fetchTrendingVideoList = async () => {
-    this.isLoading = true;
+    // this.isLoading = true;
     const token = Cookies.get("jwt_token");
     // console.log(token);
     const option = {
@@ -104,7 +111,7 @@ class HomeVideosStore {
   };
 
   fetchHomeVideoList = async () => {
-    this.isLoading = true;
+    // this.isLoading = true;
     const token = Cookies.get("jwt_token");
     // console.log(token);
     const option = {
@@ -134,6 +141,58 @@ class HomeVideosStore {
     }
   };
 
+  fetchVideoDetails = async (props: string) => {
+    // console.log(props);
+    // this.isLoading = true;   
+    // console.log('here1');
+    // const tempList[] =homeVideosStore.savedVideoList && toJS(homeVideosStore.savedVideoList);
+    
+    let curObj : HomeVideoModel= (this.homeVideosList && this.homeVideosList.find((x: HomeVideoModel) => x.id === props))!
+    const updateValues = (data: any) => {
+      console.log(curObj);
+      curObj.videoUrl=data.video_url;
+      curObj.description=data.description;
+      //  curObj.channel.subscriberCount=data.channel.subscriber_count;
+
+    }
+    const token = Cookies.get("jwt_token");
+    // console.log(token);
+    const option = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: "GET",
+    }; 
+    try {
+      const url = `https://apis.ccbp.in/videos/${props}`;
+      const response = await fetch(url, option);
+      const data = await response.json();
+      if (response.ok) { 
+        // console.log(data);
+        updateValues(data.video_details);
+        // this.videoDetailsData = curObj as HomeVideoModel;
+        this.isLoading = false;
+        // const temp = data.videos;
+        // console.log(this.videoDetailsData);
+
+        // new HomeVideoModel(data.videos)
+        // console.log(this.homeVideosList);
+      } else {
+        // this.homeVideosList = [];
+        console.error(data.error_msg);
+      } 
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  get completeVideoList() {
+    // this.videoList && this.videoList.push(...this.homeVideosList,...this.trendingVideosList,...this.gamingVideosList);
+    this.videoList && this.videoList.push(...this.homeVideosList);
+    this.videoList && console.log(this.videoList.length);
+    return this.videoList;
+  }
+
   get homeVideoListFn(): HomeVideoModel[] {
     // console.log(this.homeVideosList);
     // var filteredList=[];
@@ -145,8 +204,15 @@ class HomeVideosStore {
     return this.filteredList;
   }
 
-  get savedVideosListFn  ()  {
-    return this.filteredList;
+  get savedVideoList (): HomeVideoModel[] {
+    // console.log("here");
+    this.videoList =
+      this.homeVideosList &&
+      this.homeVideosList.filter((eachItem: HomeVideoModel) => {
+        console.log(eachItem.isSaved);
+        return eachItem.isSaved && eachItem;
+      });
+    return this.videoList;
   }
 }
 

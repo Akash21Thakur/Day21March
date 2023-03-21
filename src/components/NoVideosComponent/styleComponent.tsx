@@ -9,10 +9,12 @@ export const Wrapper = styled.div`
     width:100%;
     height:100%;
 
-    img{
-        width:250px;
+    
+`
+
+export const NoSearchImageContainer = styled.img`
+    width:250px;
         height: 250px;
-    }
 `
 
 export const TryDiffContainer= styled.div`
@@ -26,5 +28,12 @@ export const NoSearchRes = styled.div`
 `
 
 export const RetryButton = styled.button`
-    
+        margin-top: 15px;
+    width: 100px;
+    padding: 10px;
+    font-weight: bold;
+    background-color: #4d4ddf;
+    border: none;
+    color: white;
+    cursor: pointer;
 `

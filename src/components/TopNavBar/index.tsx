@@ -7,8 +7,9 @@ import { Navigate, useNavigate} from "react-router";
 // import { ThemeContext1 } from "../../App";
 import { DARK_THEME_LOGO, LIGHT_THEME_LOGO, WATCH_LOGO_DARK } from "../../constants/logos";
 import ThemeStore from "../../stores/themeStore";
+import { Icon } from "../EachPageDiv/styleComponent";
 // import themeStore from "../../stores/themeStore";
-import { Header, IconContainer, Logout, RightContainer } from "./styleComponent";
+import { Header, IconContainer, Logout, ProfileImageContainer, RightContainer, ThemeIcon } from "./styleComponent";
 
 interface Props {}
 
@@ -59,8 +60,8 @@ const TopNavBar = inject("themeStore")(observer((props: any) => {
         </IconContainer>
         <RightContainer>
         {/* <i class="fa-solid fa-sun"></i> */}
-        <i className={(!currTheme ? 'fa-solid fa-moon darkmode' : 'fa-solid fa-sun lightmode')} onClick={handleClick}> </i>
-        <img className="profile-pic" src={WATCH_LOGO_DARK} />
+        <ThemeIcon className={(!currTheme ? 'fa-solid fa-moon darkmode' : 'fa-solid fa-sun lightmode')} onClick={handleClick}/>
+        <ProfileImageContainer className="profile-pic" src={WATCH_LOGO_DARK} />
         <Logout onClick={handleLogout}>
             Logout
         </Logout>

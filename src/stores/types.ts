@@ -14,8 +14,8 @@ export interface FetchedChannelType {
   
   export interface FetchedHomeDetails extends BaseFetchedVideoDetails {
     
-    channel: FetchedChannelType ;
-    published_at: string;
+    channel?: FetchedChannelType ;
+    published_at?: string;
     description?: string;
     video_url?: string;
     

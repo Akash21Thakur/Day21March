@@ -13,13 +13,13 @@ export class ChannelType {
 export class VideoDetailChannelType {
   name: string;
   profileImageUrl: string;
-  subscriberCount: string;
+  subscriberCount: string ;
 
   constructor(data: FetchedChannelType) {
     //  super(data);
     this.name = data.name;
     this.profileImageUrl = data.profile_image_url;
-    this.subscriberCount = data.subscriber_count ? data.subscriber_count : "";
+    this.subscriberCount = data.subscriber_count ? data.subscriber_count : '';
   }
 }
 

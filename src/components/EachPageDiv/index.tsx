@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { EachPageCont, IconTextDiv } from "./styleComponent";
+import { EachPageCont, Icon, IconTextDiv, PageName } from "./styleComponent";
 
 const EachPageDiv = () => {
   return (
@@ -7,26 +7,26 @@ const EachPageDiv = () => {
       <EachPageCont>
         <NavLink to="/" className='navlink'>
           <IconTextDiv className="navlink">
-            <i className="fa-solid fa-house"></i>
-            <div className="text">Home</div>
+            <Icon className="fa-solid fa-house" />
+            <PageName className="text">Home</PageName>
           </IconTextDiv>
         </NavLink>
         <NavLink to="/trending" className='navlink'>
           <IconTextDiv>
-            <i className="fa-solid fa-fire-flame-curved"></i>
-            <div className="text">Trending</div>
+            <Icon className="fa-solid fa-fire-flame-curved"/>
+            <PageName className="text">Trending</PageName>
           </IconTextDiv>
         </NavLink>
         <NavLink to="/gaming" className='navlink'>
           <IconTextDiv>
-            <i className="fa-solid fa-gamepad"></i>
-            <div className="text">Gaming</div>
+            <Icon className="fa-solid fa-gamepad"/>
+            <PageName className="text">Gaming</PageName>
           </IconTextDiv>
         </NavLink>
         <NavLink to="/saved-videos" className='navlink'>
           <IconTextDiv>
-            <i className="fa-solid fa-list-check"></i>
-            <div className="text">Saved Videos</div>
+            <Icon className="fa-solid fa-list-check"/>
+            <PageName className="text">Saved Videos</PageName>
           </IconTextDiv>
         </NavLink>
       </EachPageCont>

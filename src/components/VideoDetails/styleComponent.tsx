@@ -11,25 +11,36 @@ export const Wrapper = styled.div`
   padding-top: 56.25%; 
 /* } */
 
-.video-player {
- width:100%;
-  /* top: 0;
+  .video-player {
+    width: 100%;
+    /* top: 0;
   left: 0; */
-} */
-
-  .hr-line {
-    width: 100% ;
+  }
+  */ .hr-line {
+    width: 100%;
     height: 3px;
     margin-top: 15px;
     background-color: black;
   }
-`
+`;
 
 // export const VideoContainer= styled.div`
 //     width:100% !important;
 //     height:300px !important;
 
 // `
+
+export const HorizontalLine = styled.div`
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  margin-top: 20px;
+`;
+
+export const VideoPlayerContainer = styled.div`
+  width: 100%;
+  height: 100%;
+`;
 
 export const VideoTitle = styled.div`
   margin-top: 15px;
@@ -54,14 +65,40 @@ export const LikeDislikeSaveDiv = styled.div`
   display: flex;
 `;
 
-export const LikeDislikeSave = styled.div`
+interface Props{
+    like: boolean
+}
+
+export const LikeDislikeSave = styled.div<Props>`
   display: flex;
   padding-right: 16px;
   cursor: pointer;
   i {
     padding-right: 5px;
   }
-`;
+  color: ${(props: Props) => props.like ? 'blue' : 'black'}
+  /* color: ${props => props.color} */
+`
+export const Dislike = styled.div<Props>`
+  display: flex;
+  padding-right: 16px;
+  cursor: pointer;
+  i {
+    padding-right: 5px;
+  }
+  color: ${(props: Props) => props.like ? 'blue' : 'black'}
+  /* color: ${props => props.color} */
+`
+export const Save = styled.div<Props>`
+  display: flex;
+  padding-right: 16px;
+  cursor: pointer;
+  i {
+    padding-right: 5px;
+  }
+  color: ${(props: Props) => props.like ? 'blue' : 'black'}
+  /* color: ${props => props.color} */
+`
 
 export const ChannelDescContainer = styled.div`
   display: flex;

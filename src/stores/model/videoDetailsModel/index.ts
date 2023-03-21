@@ -4,8 +4,8 @@ import { VideoDetailChannelType } from "../homeChannelType";
 
 class VideoDetailsModel {
   id: string = "";
-  channel: VideoDetailChannelType;
-  publishedAt: string;
+  channel?: VideoDetailChannelType;
+  publishedAt?: string;
   thumbnailUrl: string;
   title: string;
   viewCount: string;
@@ -15,7 +15,7 @@ class VideoDetailsModel {
   constructor(datas: FetchedVideoDetails) {
     // console.log(datas);
     this.id = datas.id;
-    this.channel = new VideoDetailChannelType(datas.channel);
+    this.channel =datas.channel && new VideoDetailChannelType(datas.channel);
     this.publishedAt = datas.published_at;
     this.thumbnailUrl = datas.thumbnail_url;
     this.title = datas.title;

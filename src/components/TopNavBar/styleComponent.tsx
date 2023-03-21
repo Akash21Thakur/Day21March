@@ -9,9 +9,7 @@ export const Header = styled.div`
   /* height: 50px; */
 
   i {
-    font-size: 35px;
-    margin: 15px;
-    cursor: pointer;
+    
   }
 
   .lightmode{
@@ -27,6 +25,16 @@ export const Header = styled.div`
   }
 `;
 
+export const ThemeIcon = styled.i`
+  font-size: 35px;
+    margin: 15px;
+    cursor: pointer;
+`
+
+
+export const  ProfileImageContainer = styled.img`
+  
+`
 export const Logout = styled.button`
   font-weight: bold;
   font-size: 14px;
