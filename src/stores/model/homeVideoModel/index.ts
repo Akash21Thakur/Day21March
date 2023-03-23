@@ -9,7 +9,7 @@ import { ChannelType, VideoDetailChannelType } from "../homeChannelType";
   title: string;
   thumbnailUrl: string;
   viewCount: string;
-  isSaved: boolean=true;
+  isSaved: boolean=false;
   isLiked: boolean=false;
   isDisliked: boolean=false;
 

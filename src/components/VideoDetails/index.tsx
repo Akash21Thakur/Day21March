@@ -3,8 +3,16 @@ import { toJS } from "mobx";
 import { inject, observer } from "mobx-react";
 import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
-import { HomeVideoModel } from "../../stores/model/homeVideoModel";
-import VideoDetailsStore from "../../stores/videoDetailsStore";
+import HomeVideosStore from "../../stores/homeVideoStore";
+import {
+  BaseVideoModel,
+  HomeVideoModel,
+} from "../../stores/model/homeVideoModel";
+import { ApiStatus } from "../../stores/types";
+import { Icon } from "../EachPageDiv/styleComponent";
+// import VideoDetailsStore, {
+//   VideoDetailsType,
+// } from "../../stores/videoDetailsStore";
 import { VideoDescription } from "../HomeVideoCard/styleComponent";
 import {
   ChannelDescContainer,
@@ -12,14 +20,10 @@ import {
   ChannelName,
   Dislike,
   HorizontalLine,
-  
- 
   LikeDislikeSave,
- 
   LikeDislikeSaveDiv,
   Profile,
   PublishedAt,
-  
   Subscriber,
   VideoDescriptionDiv,
   VideoPlayerContainer,
@@ -31,56 +35,59 @@ import {
 } from "./styleComponent";
 
 interface Props {
-  videoId: string;
-  videoDetailsStore: VideoDetailsStore;
+  homeVideosStore: HomeVideosStore
+  videoId: string | undefined;
+  // videoDetailsStore: VideoDetailsStore;
 }
-
-const VideoDetails = inject("videoDetailsStore")(
+interface InheritedProps extends Props {}
+const VideoDetails = inject(
+  "videoDetailsStore",
+  "homeVideosStore"
+)(
   observer((props: any) => {
-    const videoDetailsStore = props.videoDetailsStore as VideoDetailsStore;
-    // console.log(toJS(props.videoDetailsStore.videoDetailsData));
-    let data : HomeVideoModel;
-    // let color1: boolean;
-    // videoDetailsStore.id=props.videoId;
-    // videoDetailsStore.demoComputed;
-    // console.log(videoDetailsStore);
-  const handleLiked = () => {
-    // console.log(data.toggleLiked)
-       data.toggleLiked();
-  }
+    // const videoDetailsStore = props.videoDetailsStore as VideoDetailsStore;
+    const {homeVideosStore} = props;
+    
+    let data: HomeVideoModel;
+   
+    const handleLiked = () => {
+      // console.log(data.toggleLiked)
+      data.toggleLiked();
+    };
 
-  const handleDisliked = () => {
-       data.toggleDisliked();
-  }
+    const handleDisliked = () => {
+      data.toggleDisliked();
+    };
 
-  const handleSaved = () => {
-       data.toggleSaved();
-  }
+    const handleSaved = () => {
+      data.toggleSaved();
+    };
     useEffect(() => {
-      // console.log(videoDetailsStore.getDe)
-      videoDetailsStore.getDetails(props.videoId);
+
+     
+      homeVideosStore.fetchVideoDetails(props.videoId);
+      console.log(props.videoId)
     }, []);
+    console.log(homeVideosStore.videoDetailsData)
     const renderVideoDetails = () => {
-      // console.log(videoDetailsStore);
-      // console.log(videoDetailsStore.videoDetailsData);
-      // console.log(videoState.videoList.video_details);
-      // console.log(videoDetailsStore.videoDetailsData);
-      console.log("akash123")
-      data = videoDetailsStore.videoDetailsData;
+      
+      
+      data = homeVideosStore.videoDetailsData;
+      console.log(data)
+      // debugger
       return (
         <>
-        {/* <div>details Page</div> */}
-          <Wrapper>
+        {/* <div>akash</div> */}
+          {/* <div>details Page</div> */}
+           <Wrapper>
             <VideoPlayerContainer>
-
-            <ReactPlayer
-              className="video-player"
-              light={data.thumbnailUrl}
-              url={data.videoUrl}
-              width='100%'
-              height='100%'
-              
-            ></ReactPlayer>
+              <ReactPlayer
+                className="video-player"
+                light={data.thumbnailUrl}
+                url={data.videoUrl}
+                width="100%"
+                height="100%"
+              ></ReactPlayer>
             </VideoPlayerContainer>
             <VideoTitle>{data.title}</VideoTitle>
             <ViewsLikeSaveDiv>
@@ -90,44 +97,68 @@ const VideoDetails = inject("videoDetailsStore")(
               </ViewsPublishedDiv>
               <LikeDislikeSaveDiv>
                 <LikeDislikeSave onClick={handleLiked} like={data.isLiked}>
-                  <i className="fa-regular fa-thumbs-up"></i>
+                  <Icon className="fa-regular fa-thumbs-up" />
                   <div>Like</div>
-                </LikeDislikeSave >
-                <LikeDislikeSave onClick={handleDisliked} like={data.isDisliked}>
-                  <i className="fa-regular fa-thumbs-down"></i>
+                </LikeDislikeSave>
+                <LikeDislikeSave
+                  onClick={handleDisliked}
+                  like={data.isDisliked}
+                >
+                  <Icon className="fa-regular fa-thumbs-down"/>
                   <div>Dislike</div>
                 </LikeDislikeSave>
                 <LikeDislikeSave onClick={handleSaved} like={data.isSaved}>
-                  <i className="fa-solid fa-list-check"></i>
+                  <Icon className="fa-solid fa-list-check"/>
                   <div>Save</div>
                 </LikeDislikeSave>
               </LikeDislikeSaveDiv>
             </ViewsLikeSaveDiv>
             <HorizontalLine />
-            <ChannelDescContainer>
+            <ChannelDescContainer> 
               <Profile src={data.channel?.profileImageUrl}/>
               <ChannelDetails>
                 <ChannelName>{data.channel?.name}</ChannelName>
                 <Subscriber>{data.channel?.subscriberCount} subscribers</Subscriber>
                 <VideoDescriptionDiv>{data.description}</VideoDescriptionDiv>
               </ChannelDetails>
+              {/* CHannel Desc */}
             </ChannelDescContainer>
-          </Wrapper>
+          </Wrapper> 
         </>
       );
     };
 
     const renderLoader = () => {
       // getVideoList();
-      console.log('Loading Here')
+      // console.log("Loading Here");
       return <div>Loading...</div>;
     };
 
+    
+
+    const renderThings = () => {
+      const apiStatus = homeVideosStore.apiStatusVideoDetail;
+      // console.log(apiStatus)
+      switch (apiStatus) {
+        case ApiStatus.LOADING:
+         return renderLoader();
+          
+          case ApiStatus.SUCESS:
+            // {console.log("Successs")}
+            return renderVideoDetails();
+            
+            default:
+            return <div>Video Details</div>;
+           
+      }
+    };
     return (
       <>
+      {/* <div>akash1</div> */}
+       { renderThings()}
         {/* <div>akash</div> */}
-        {console.log(videoDetailsStore.isLoading)}
-        {videoDetailsStore.isLoading ? renderLoader() : renderVideoDetails()}
+        {/* {console.log("End")} */}
+        {/* {homeVideosStore.apiStatusVideoDetail ? renderLoader() : renderVideoDetails()} */}
       </>
     );
   })

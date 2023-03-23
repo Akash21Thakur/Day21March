@@ -50,3 +50,10 @@ export interface FetchedChannelType {
   
     video_details: VideoType;
   }
+
+  export enum ApiStatus{
+    INITIAL,
+    LOADING,
+    SUCESS,
+    FAILURE
+}

@@ -4,6 +4,7 @@ import { HomeVideoDummyData } from "../../fixtures/homeVideoFixture";
 // import { MainContainer } from "../../routes/HomePage/styleComponents";
 import HomeVideosStore from "../../stores/homeVideoStore";
 import { HomeVideoModel } from "../../stores/model/homeVideoModel";
+import { ApiStatus } from "../../stores/types";
 import Banner from "../Banner";
 import { Icon } from "../EachPageDiv/styleComponent";
 // import HomeVideoModel from "../../stores/model/homeVideoModel";
@@ -56,8 +57,24 @@ const HomePageContent = inject("homeVideosStore")(
       );
     };
 
-    const renderLoader = () => {
-      return <div>Loading</div>;
+    const renderLoader = ()=> {
+      return <div>Loading</div>
+    }
+    const renderThings = () => {
+      const apiStatus = homeVideosStore.apiStatusHomeVideos;
+      // console.log(apiStatus)
+      switch (apiStatus) {
+        case ApiStatus.LOADING:
+         return renderLoader();
+          
+          case ApiStatus.SUCESS:
+            // {console.log("Successs")}
+            return renderHistoryList();
+            
+            default:
+            return <div>Video Details</div>;
+           
+      }
     };
 
     return (
@@ -79,7 +96,7 @@ const HomePageContent = inject("homeVideosStore")(
           </SearchWithIcon>
 
           <HomeVideosMainDiv>
-            {homeVideosStore.isLoading ? renderLoader() : renderHistoryList()}
+            {renderThings()}
           </HomeVideosMainDiv>
         </Wrapper>
       </>

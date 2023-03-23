@@ -19,7 +19,7 @@ const SavedVideosPageContent = inject("homeVideosStore")(
     // let videoList: HomeVideosStore[];
     // let videoLits
     // console.log(homeVideosStore)
-    const videoList = toJS(homeVideosStore.savedVideoList);
+    const videoList = toJS(homeVideosStore.savedVideoList) as HomeVideoModel[];
     // console.log(videoList);
     // debugger
     const renderSavedVideos = () => {
@@ -28,7 +28,7 @@ const SavedVideosPageContent = inject("homeVideosStore")(
         <>
           {videoList &&
             (videoList.length > 0 ? (
-              videoList.map((each: any) => {
+              videoList.map((each: HomeVideoModel) => {
                 return <TrendingVideoCard key={each.id} data={each} />;
               })
             ) : (

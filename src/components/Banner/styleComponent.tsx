@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
+    box-sizing: border-box;
     /* height:600px; */
     padding:30px;
     background-image: url(${BANNER_BG_IMG});
