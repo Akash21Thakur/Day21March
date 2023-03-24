@@ -1,6 +1,8 @@
 import { FireIcon, Header, IconContainer, PageTitle } from "./styleComponent";
-
-const PageHeader = (props: any) => {
+interface Props{
+  text: string
+}
+const PageHeader = (props: Props) => {
   // console.log(props);
   return (
     <>

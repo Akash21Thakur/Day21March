@@ -30,6 +30,8 @@ class HomeVideosStore {
   isLoadingVideoDetails: boolean = true;
   finalFetchedList: HomeVideoModel[]=[];
   apiStatusVideoDetail: ApiStatus;
+  showDrawerList: boolean=false;
+  
   // savedVideoList: HomeVideoModel[] = [];
 
   constructor() {
@@ -51,6 +53,8 @@ class HomeVideosStore {
       apiStatusGamingVideos:observable,
       apiStatusHomeVideos:observable,
       apiStatusTrendingVideos:observable,
+      showDrawerList: observable,
+      toggleDrawerView: action,
       // finalFetchedList:observable,
       // savedVideosListFn: computed,
       updateSearchedText: action,
@@ -63,10 +67,14 @@ class HomeVideosStore {
     // console.log("akash");
     // this.fetchHomeVideoList();
     // this.fetchTrendingVideoList();
-    this.fetchGamingVideoList();
+    // this.fetchGamingVideoList();
 
     // console.log(this.videoList);
     // this.filteredList=this.homeVideosList
+  }
+
+  toggleDrawerView = () =>{
+   this.showDrawerList=!this.showDrawerList;
   }
 
   removeBanner = () => {
@@ -103,11 +111,12 @@ class HomeVideosStore {
         // new HomeVideoModel(data.videos)
       } else {
         // this.homeVideosList = [];
-        this.apiStatusGamingVideos=ApiStatus.FAILURE;
         console.log(data.error_msg);
       }
     } catch (err) {
-      console.error(err);
+      this.apiStatusGamingVideos=ApiStatus.FAILURE;
+      // console.log('erro')
+      // console.error(err);
     }
   };
 
@@ -142,7 +151,8 @@ class HomeVideosStore {
         console.log(data.error_msg);
       }
     } catch (err) {
-      console.error(err);
+      this.apiStatusTrendingVideos=ApiStatus.FAILURE
+      // console.error(err);
     }
   };
 
@@ -176,7 +186,8 @@ class HomeVideosStore {
         console.log(data.error_msg);
       }
     } catch (err) {
-      console.error(err);
+      this.apiStatusHomeVideos=ApiStatus.FAILURE;
+      // console.error(err);
     }
   };
 
@@ -239,7 +250,8 @@ class HomeVideosStore {
           console.error(data.error_msg);
         }
       } catch (err) {
-        console.error(err);
+        this.apiStatusVideoDetail=ApiStatus.FAILURE
+        // console.error(err);
       }
     }
   };

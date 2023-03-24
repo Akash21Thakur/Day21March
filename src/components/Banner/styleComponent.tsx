@@ -6,11 +6,17 @@ export const Wrapper = styled.div`
     justify-content: space-between;
     width: 100%;
     box-sizing: border-box;
+    color: black;
     /* height:600px; */
     padding:30px;
     background-image: url(${BANNER_BG_IMG});
     background-size: 100% 100%;
     margin-bottom: 60px;
+
+    @media (max-width: 576px) {
+   padding:15px;
+   width:100%;
+  }
 `
 
 export const LeftContainer = styled.div`
@@ -18,8 +24,10 @@ export const LeftContainer = styled.div`
     flex-direction: column;
 `
 
-export const CrossButton = styled.div`
+export const CrossButton = styled.span`
     cursor: pointer;
+    font-weight: 500 ;
+    
 `
 
 export const NxtwatchLogo = styled.img`
@@ -30,6 +38,10 @@ export const BuyNextParaContainer = styled.div`
     margin-top: 10px;
     font-size: 20px;
     width: 400px;
+
+    @media (max-width: 576px) {
+    width:200px;
+  }
 `
 
 export const GetItNowBotton = styled.button`

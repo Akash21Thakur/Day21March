@@ -1,21 +1,31 @@
 import { inject } from "mobx-react";
 import { Link } from "react-router-dom";
-import { HomeVideoModel } from "../../stores/model/homeVideoModel";
+import HomeVideosStore from "../../stores/homeVideoStore";
+import { BaseVideoModel, HomeVideoModel } from "../../stores/model/homeVideoModel";
 import { ImageContainer, Title, Views, Wrapper } from "./styleComponent";
 // import { Wrapper } from "../NoVideosComponent/styleComponent";
 // import { ImageContainer, Title } from "../TrendingVideoCard/styleComponent";
 
-const GamingVideoCard = inject("homeVideosStore")((props: any) => {
+interface Props{
+  data: BaseVideoModel
+}
+
+interface InjectedProps extends Props{
+  homeVideosStore: HomeVideosStore
+}
+
+
+const GamingVideoCard = inject("homeVideosStore")((props: Props) => {
     // const {homeVideosStore} = props.data;
     // console.log(props.data);
-    const data=props.data as HomeVideoModel;
+    const {data}=props;
   return (
     <>
     <Link to={`/videos/${data.id}`} className='link'>
       <Wrapper>
         <ImageContainer src={data.thumbnailUrl} />
         <Title>{data.title}</Title>
-        <Views>{data.viewCount} Watcing Worldwide</Views>
+        <Views>{data.viewCount} Watching Worldwide</Views>
       </Wrapper>
       {/* <Wrapper>
         <ImageContainer src={data.thumbnailUrl} />

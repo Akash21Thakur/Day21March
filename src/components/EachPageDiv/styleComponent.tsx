@@ -8,8 +8,9 @@ export const EachPageCont = styled.div`
   color: #fff;
   .active {
       text-decoration: none;
-      background-color: #dfcece;
+      background-color: #cecbcb;
       font-weight: bold;
+      
     i {
       color: red;
     }

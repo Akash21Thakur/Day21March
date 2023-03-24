@@ -4,7 +4,7 @@ export const Header = styled.div`
 display: flex;
 /* justify-content: center; */
 align-items: center;
-background-color: #d6d8da;
+background-color: ${({theme}) => theme.background_color};
 padding: 30px;
 `
 

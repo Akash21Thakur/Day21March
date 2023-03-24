@@ -2,6 +2,7 @@ import { inject, observer } from "mobx-react";
 import { shallowEnhancer } from "mobx/dist/internal";
 import { useState } from "react";
 import { DARK_THEME_LOGO, LIGHT_THEME_LOGO } from "../../constants/logos";
+import HomeVideosStore from "../../stores/homeVideoStore";
 import {
   BuyNextParaContainer,
   CrossButton,
@@ -11,9 +12,15 @@ import {
   Wrapper,
 } from "./styleComponent";
 
-const Banner = inject('homeVideosStore')(observer((props: any) => {
+interface Props{}
+
+interface InjectedProps extends Props{
+  homeVideosStore: HomeVideosStore
+}
+
+const Banner = inject('homeVideosStore')(observer((props: Props) => {
     // const [show,setShow] =useState(false);
-    const {homeVideosStore} = props;
+    const {homeVideosStore} = props as InjectedProps;
  const handleClick = () => {
     //  setShow(true)
     homeVideosStore.removeBanner();

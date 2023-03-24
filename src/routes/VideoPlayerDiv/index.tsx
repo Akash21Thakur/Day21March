@@ -6,7 +6,7 @@ import withSideTopNavBar from "../../hocs/withSideTopNavbar";
 import { MainContainer } from "../../hocs/withSideTopNavbar/styleComponents";
 // import { MainContainer } from "../HomePage/styleComponents";
 interface Props{}
-const VideoPlayerDiv = (props: Props) => {
+const VideoPlayerDiv = () => {
     const params=useParams();
     let videoId:string;
     // console.log(params);

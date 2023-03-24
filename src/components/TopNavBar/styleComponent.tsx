@@ -3,17 +3,16 @@ import styled from "styled-components";
 export const Header = styled.div`
   display: flex;
   width: 100%;
-  height:72px;
+  height: 72px;
   justify-content: space-between;
   /* background-color: white; */
   /* height: 50px; */
 
   i {
-    
   }
 
-  .lightmode{
-    color:#fff;
+  .lightmode {
+    color: #fff;
     font-size: 35px;
     margin: 15px;
   }
@@ -27,14 +26,24 @@ export const Header = styled.div`
 
 export const ThemeIcon = styled.i`
   font-size: 35px;
-    margin: 15px;
-    cursor: pointer;
-`
+  margin: 15px;
+  cursor: pointer;
+`;
+export const Drawer = styled.i`
+  display: none;
+  font-size: 25px;
 
+  @media (max-width: 576px) {
+   display: block;
+  }
+  /* font-weight: 500; */
+`;
 
-export const  ProfileImageContainer = styled.img`
-  
-`
+export const ProfileImageContainer = styled.img`
+   @media (max-width: 576px) {
+   display: none;
+  }
+`;
 export const Logout = styled.button`
   font-weight: bold;
   font-size: 14px;
@@ -51,7 +60,7 @@ export const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width:300px;
+  width: 300px;
   cursor: pointer;
   /* padding: 10px; */
 
@@ -63,7 +72,59 @@ export const IconContainer = styled.div`
   }
 `;
 
+export const Para = styled.p`
+  
+`
+
 export const RightContainer = styled.div`
   display: flex;
   align-items: center;
+  box-sizing: border-box !important;
+
+  .modal {
+    position: absolute;
+    color: red;
+    width: 100%;
+    /* background-color: ; */
+  }
+  .ReactModal__Content {
+    div {
+      padding: 0px !important;
+    }
+  }
+  .Overlay {
+  }
+`;
+
+export const PopupContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 150px;
+  background-color: ${({ theme }) => theme.background_color};
+  /* width: 300px;
+  height:200px; */
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  .confirm {
+    background-color: #3b82f6;
+    color: #fff;
+  }
+`;
+
+export const Button1 = styled.button`
+  background-color: #d0d7df;
+  outline: none;
+  border: 1px solid black;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 8px;
 `;

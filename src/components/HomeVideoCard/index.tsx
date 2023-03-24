@@ -5,13 +5,12 @@ import { ChannelName } from "../TrendingVideoCard/styleComponent";
 // import {HomeVideoModel} from "../../stores/model/homeVideoModel";
 import {ViewsAndDateDiv,VideoTitle,VideoChannelDetails,VideoDescription, VideoCardMainDiv, ThumbnailDiv, ChannelIcon } from "./styleComponent";
 interface Props{
-    key: string;
+    
+    data: HomeVideoModel; 
 }
 
-interface DataTypeex{
-    data: HomeVideoModel; 
-} 
-const HomeVideoCard = (props: any) => {
+
+const HomeVideoCard = (props: Props) => {
     const {data}= props;
     // const {data,}
     // console.log(data);
@@ -23,10 +22,10 @@ const HomeVideoCard = (props: any) => {
       <VideoCardMainDiv>
            <ThumbnailDiv src={data.thumbnailUrl} alt='#' />
            <VideoDescription>
-            <ChannelIcon src={data.channel.profileImageUrl}/>
+            <ChannelIcon src={data.channel?.profileImageUrl}/>
            <VideoChannelDetails>
                <VideoTitle>{data.title}</VideoTitle>
-               <ChannelName>{data.channel.name}</ChannelName>
+               <ChannelName>{data.channel?.name}</ChannelName>
                {/* <ViewsAndDateDiv> */}
                 <Views>{data.viewCount} views . {data.publishedAt}</Views>
                 {/* <div>.</div> */}

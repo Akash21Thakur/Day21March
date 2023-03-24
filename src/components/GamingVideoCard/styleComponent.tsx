@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
     flex-direction: column;
     margin-bottom: 40px;
     margin-right: 30px;
+    
 `
 
 export const ImageContainer = styled.img`

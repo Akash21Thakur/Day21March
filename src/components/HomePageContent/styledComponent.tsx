@@ -5,10 +5,19 @@ export const Wrapper = styled.div`
   width: 100%;
   padding: 50px;
   flex-direction: column;
+  overflow-y: auto;
+
+  @media (max-width: 576px) {
+    /* flex-direction: column; */
+    padding-left: 0px;
+    padding-right: 0px;
+    align-items: center;
+  }
 `;
 
 export const HomeVideosMainDiv = styled.div`
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   height:100%;
   overflow-y: auto;

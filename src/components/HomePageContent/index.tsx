@@ -7,8 +7,10 @@ import { HomeVideoModel } from "../../stores/model/homeVideoModel";
 import { ApiStatus } from "../../stores/types";
 import Banner from "../Banner";
 import { Icon } from "../EachPageDiv/styleComponent";
+import FailureViewComponent from "../FailureViewComponent";
 // import HomeVideoModel from "../../stores/model/homeVideoModel";
 import HomeVideoCard from "../HomeVideoCard";
+import Loader from "../Loader";
 import NoVideosComponent from "../NoVideosComponent";
 import {
   SearchVideos,
@@ -26,11 +28,11 @@ interface InjectedProps extends Props {
 }
 
 const HomePageContent = inject("homeVideosStore")(
-  observer((props: any) => {
-    const { homeVideosStore } = props;
+  observer((props: Props) => {
+    const { homeVideosStore } = props as InjectedProps;
 
     // const updatedHomeVideosList=HomeVideoDummyData;
-    const handleSearch = (event: any) => {
+    const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
       // console.log(homeVideosStore.completeVideoList);
       homeVideosStore.updateSearchedText(event.target.value);
       //  {console.log(homeVideosStore.searchedText)}
@@ -57,23 +59,24 @@ const HomePageContent = inject("homeVideosStore")(
       );
     };
 
-    const renderLoader = ()=> {
-      return <div>Loading</div>
-    }
+    const renderLoader = () => {
+      return <div>Loading</div>;
+    };
     const renderThings = () => {
       const apiStatus = homeVideosStore.apiStatusHomeVideos;
       // console.log(apiStatus)
       switch (apiStatus) {
         case ApiStatus.LOADING:
-         return renderLoader();
-          
-          case ApiStatus.SUCESS:
-            // {console.log("Successs")}
-            return renderHistoryList();
-            
-            default:
-            return <div>Video Details</div>;
-           
+          return <Loader/>
+
+        case ApiStatus.SUCESS:
+          // {console.log("Successs")}
+          return renderHistoryList();
+        case ApiStatus.FAILURE:
+          // return <div>Akash</div>
+          return <FailureViewComponent />;
+        default:
+          return <div>Video Details</div>;
       }
     };
 
@@ -95,9 +98,7 @@ const HomePageContent = inject("homeVideosStore")(
             </SearchIconDiv>
           </SearchWithIcon>
 
-          <HomeVideosMainDiv>
-            {renderThings()}
-          </HomeVideosMainDiv>
+          <HomeVideosMainDiv>{renderThings()}</HomeVideosMainDiv>
         </Wrapper>
       </>
     );

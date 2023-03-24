@@ -10,10 +10,12 @@ import {
 } from "../../stores/model/homeVideoModel";
 import { ApiStatus } from "../../stores/types";
 import { Icon } from "../EachPageDiv/styleComponent";
+import FailureViewComponent from "../FailureViewComponent";
 // import VideoDetailsStore, {
 //   VideoDetailsType,
 // } from "../../stores/videoDetailsStore";
 import { VideoDescription } from "../HomeVideoCard/styleComponent";
+import Loader from "../Loader";
 import {
   ChannelDescContainer,
   ChannelDetails,
@@ -35,18 +37,20 @@ import {
 } from "./styleComponent";
 
 interface Props {
-  homeVideosStore: HomeVideosStore
+  
   videoId: string | undefined;
   // videoDetailsStore: VideoDetailsStore;
 }
-interface InheritedProps extends Props {}
+interface InheritedProps extends Props {
+  homeVideosStore: HomeVideosStore
+}
 const VideoDetails = inject(
   "videoDetailsStore",
   "homeVideosStore"
 )(
-  observer((props: any) => {
+  observer((props: Props) => {
     // const videoDetailsStore = props.videoDetailsStore as VideoDetailsStore;
-    const {homeVideosStore} = props;
+    const {homeVideosStore} = props as InheritedProps;
     
     let data: HomeVideoModel;
    
@@ -65,7 +69,7 @@ const VideoDetails = inject(
     useEffect(() => {
 
      
-      homeVideosStore.fetchVideoDetails(props.videoId);
+      props.videoId && homeVideosStore.fetchVideoDetails(props.videoId);
       console.log(props.videoId)
     }, []);
     console.log(homeVideosStore.videoDetailsData)
@@ -141,11 +145,13 @@ const VideoDetails = inject(
       // console.log(apiStatus)
       switch (apiStatus) {
         case ApiStatus.LOADING:
-         return renderLoader();
+         return <Loader />
           
           case ApiStatus.SUCESS:
             // {console.log("Successs")}
             return renderVideoDetails();
+          case ApiStatus.FAILURE:
+            return <FailureViewComponent />  
             
             default:
             return <div>Video Details</div>;

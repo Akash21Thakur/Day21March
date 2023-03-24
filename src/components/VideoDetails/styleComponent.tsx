@@ -44,6 +44,7 @@ export const VideoPlayerContainer = styled.div`
 
 export const VideoTitle = styled.div`
   margin-top: 15px;
+  font-weight: 500;
 `;
 
 export const ViewsLikeSaveDiv = styled.div`
@@ -51,9 +52,15 @@ export const ViewsLikeSaveDiv = styled.div`
   margin-top: 15px;
   width: 100%;
   justify-content: space-between;
+
+  @media (max-width: 576px) {
+    margin-top:6px;
+   flex-wrap: wrap;
+  }
 `;
 export const ViewsPublishedDiv = styled.div`
   display: flex;
+  margin-top:8px;
 `;
 
 export const ViewCount = styled.div``;
@@ -63,6 +70,13 @@ export const PublishedAt = styled.div`
 `;
 export const LikeDislikeSaveDiv = styled.div`
   display: flex;
+
+  @media (max-width: 576px) {
+    margin-top: 6px;
+    width:100%;
+    justify-content: space-between;
+    
+  }
 `;
 
 interface Props{
@@ -73,10 +87,15 @@ export const LikeDislikeSave = styled.div<Props>`
   display: flex;
   padding-right: 16px;
   cursor: pointer;
+  /* font-weight: 500; */
+  font-weight: ${(props: Props) => props.like ? 500 : 300};
+  color: ${(props: Props) => props.like ? 'blue' : ({theme}) => theme.color};
   i {
+    
     padding-right: 5px;
+    color: ${(props: Props) => props.like ? 'blue' : ({theme}) => theme.color};
+
   }
-  color: ${(props: Props) => props.like ? 'blue' : 'black'}
   /* color: ${props => props.color} */
 `
 export const Dislike = styled.div<Props>`
@@ -119,10 +138,10 @@ export const ChannelDetails = styled.div`
 export const ChannelName = styled.div`
   font-weight: 500;
   font-size: 20px;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 `;
 export const Subscriber = styled.div`
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 `;
 export const VideoDescriptionDiv = styled.div`
   display: flex;

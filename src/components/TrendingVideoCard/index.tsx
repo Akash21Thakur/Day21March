@@ -1,19 +1,26 @@
 import { inject } from "mobx-react";
 import { Link } from "react-router-dom";
+import HomeVideosStore from "../../stores/homeVideoStore";
 import { HomeVideoModel } from "../../stores/model/homeVideoModel";
 import { ChannelDetails, ChannelName, ImageContainer, Title, ViewsAndPublished, Wrapper } from "./styleComponent";
 
-const TrendingVideoCard = inject("homeVideosStore")((props: any) => {
+
+interface Props{
+  data: HomeVideoModel
+}
+
+
+const TrendingVideoCard = (props: Props) => {
     // const {homeVideosStore} = props.data;
     // console.log(props.data);
-    const data=props.data as HomeVideoModel;
+    const {data}=props;
   return (
     <>
     <Link to={`/videos/${data.id}`} className='link'>
 
       <Wrapper>
         <ImageContainer src={data.thumbnailUrl} />
-        <ChannelDetails>
+        <ChannelDetails className="channel-details">
             <Title>{data.title}</Title>
             <ChannelName>{data.channel?.name}</ChannelName>
             <ViewsAndPublished>{data.viewCount} views . {data.publishedAt} </ViewsAndPublished>
@@ -22,6 +29,6 @@ const TrendingVideoCard = inject("homeVideosStore")((props: any) => {
     </Link>
     </>
   );
-});
+}
 
 export default TrendingVideoCard;

@@ -34,11 +34,13 @@ export const GlobalStyle =  createGlobalStyle `
 
 
 export const darkTheme: DefaultTheme = {
-    color: '#a19696',
-    background_color: '#2b2727'
+    color: '#fdfdfd',
+    background_color: '#2b2727',
+
 }
 
 export const lightTheme: DefaultTheme = {
     color: '#0c0c0b',
-    background_color: '#f7f7f7'
+    
+    background_color: '#f1f1f1'
 }

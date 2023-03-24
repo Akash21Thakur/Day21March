@@ -3,6 +3,7 @@ import { inject, observer } from "mobx-react";
 import { useEffect, useState } from "react";
 import HomeVideosStore from "../../stores/homeVideoStore";
 import { HomeVideoModel } from "../../stores/model/homeVideoModel";
+import Loader from "../Loader";
 import NoSavedVideos from "../NoSavedVideos";
 import PageHeader from "../PageHeader";
 import {
@@ -11,11 +12,19 @@ import {
 } from "../TrendingPageContent/styleComponent";
 import TrendingVideoCard from "../TrendingVideoCard";
 
+
+interface Props{}
+
+interface InjectedProps extends Props{
+  homeVideosStore: HomeVideosStore
+}
+
+
 const SavedVideosPageContent = inject("homeVideosStore")(
-  observer((props: any) => {
+  observer((props: Props) => {
     const [isLoading, setLoading] = useState(true);
     // const [videoList,setVideoList] = useState<HomeVideosStore[]>([]);
-    const { homeVideosStore } = props;
+    const { homeVideosStore } = props as InjectedProps;
     // let videoList: HomeVideosStore[];
     // let videoLits
     // console.log(homeVideosStore)
@@ -34,13 +43,13 @@ const SavedVideosPageContent = inject("homeVideosStore")(
             ) : (
               <NoSavedVideos />
             ))}
-            <div>Hey There</div>
+            {/* <div>Hey There</div> */}
         </>
       );
     };
 
     const renderLoader = () => {
-      return <div>Loading</div>;
+      return <Loader/>
     };
 
     useEffect(() => {
