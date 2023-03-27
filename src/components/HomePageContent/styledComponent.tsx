@@ -1,6 +1,8 @@
 import styled from "styled-components";
-
-export const Wrapper = styled.div`
+interface Props{
+  val: boolean
+}
+export const Wrapper = styled.div<Props>`
   display: flex;
   width: 100%;
   padding: 50px;
@@ -9,6 +11,7 @@ export const Wrapper = styled.div`
 
   @media (max-width: 576px) {
     /* flex-direction: column; */
+    width:${(props) => props.val ? 'calc(100vw - 300px)' : '100%'};
     padding-left: 0px;
     padding-right: 0px;
     align-items: center;
@@ -17,7 +20,7 @@ export const Wrapper = styled.div`
 
 export const HomeVideosMainDiv = styled.div`
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   flex-wrap: wrap;
   height:100%;
   overflow-y: auto;
@@ -25,6 +28,17 @@ export const HomeVideosMainDiv = styled.div`
   .link{
     color: ${({theme}) => theme.color};
     text-decoration: none;
+  }
+
+  @media (max-width: 576px) {
+    /* flex-direction: column; */
+    justify-content: center;
+
+    i{
+      margin-right: 0px;
+    }
+
+   
   }
 `;
 export const SearchWithIcon = styled.div`

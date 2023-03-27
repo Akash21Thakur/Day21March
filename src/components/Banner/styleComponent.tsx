@@ -39,6 +39,13 @@ export const BuyNextParaContainer = styled.div`
     font-size: 20px;
     width: 400px;
 
+    @media ((max-width: 992px) and  (min-width: 576px)) {
+    
+        font-size: 16px;
+        width: 220px;
+  }
+
+
     @media (max-width: 576px) {
     width:200px;
   }

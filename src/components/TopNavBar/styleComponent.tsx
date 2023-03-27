@@ -1,10 +1,14 @@
 import styled from "styled-components";
-
-export const Header = styled.div`
+interface Props{
+  // val: boolean,
+  isDark: boolean
+}
+export const Header = styled.div<Props>`
   display: flex;
   width: 100%;
   height: 72px;
   justify-content: space-between;
+   background-color: ${(props) => !props.isDark ? '#fff' : '#3b3a3a7f'};
   /* background-color: white; */
   /* height: 50px; */
 
@@ -22,6 +26,9 @@ export const Header = styled.div`
     height: 35px;
     margin: 15px;
   }
+
+
+  
 `;
 
 export const ThemeIcon = styled.i`
@@ -103,8 +110,9 @@ export const PopupContainer = styled.div`
   align-items: center;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 150px;
+  width: 400px;
+  height: 200px;
+  /* border-radius: 16px; */
   background-color: ${({ theme }) => theme.background_color};
   /* width: 300px;
   height:200px; */

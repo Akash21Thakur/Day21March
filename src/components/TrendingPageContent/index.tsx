@@ -37,17 +37,17 @@ const TrendingPageContent = inject("homeVideosStore")(
         </>
       );
     };
-    const renderLoader = () => {
-      return <ColorRing
-      visible={true}
-      height="80"
-      width="80"
-      ariaLabel="blocks-loading"
-      wrapperStyle={{}}
-      wrapperClass="blocks-wrapper"
-      colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-    />
-    };
+    // const renderLoader = () => {
+    //   return <ColorRing
+    //   visible={true}
+    //   height="80"
+    //   width="80"
+    //   ariaLabel="blocks-loading"
+    //   wrapperStyle={{}}
+    //   wrapperClass="blocks-wrapper"
+    //   colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+    // />
+    // };
     const renderThings = () => {
       const apiStatus = homeVideosStore.apiStatusTrendingVideos;
       // console.log(apiStatus)
@@ -68,7 +68,7 @@ const TrendingPageContent = inject("homeVideosStore")(
     // let apiStatus=homeVideosStore.apiStatusTrendingVideo;
     return (
       <>
-        <Wrapper>
+        <Wrapper val={homeVideosStore.showDrawerList}> 
           <PageHeader text="Trending" />
           <TrendingVideosContaniner>
             {/* {homeVideosStore.} */}

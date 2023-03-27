@@ -2,13 +2,20 @@ import styled from "styled-components";
 
 export const VideoCardMainDiv= styled.div`
     display: flex;
-    width:300px;
+    width:320px;
     height:300px;
     flex-direction: column;
     margin-bottom:30px;
+    margin-right: 14px;
     padding: 15px;
     padding-left: 0px;
     text-decoration: none;
+
+    @media (max-width: 576px) {
+    /* flex-direction: column; */
+    width:250px;
+    height: auto;
+  }
 `
 
 export const ThumbnailDiv = styled.img`
@@ -25,6 +32,8 @@ export const VideoDescription= styled.div`
         width:40px;
         margin-right:12px;
     }
+
+    
 `
 export const ChannelIcon = styled.img`
     
@@ -38,7 +47,10 @@ export const VideoChannelDetails= styled.div`
 `
 
 export const VideoTitle= styled.div`
-    
+    @media (max-width: 576px) {
+    /* flex-direction: column; */
+    margin-bottom: 6px;
+  }
 `
 
 export const ViewsAndDateDiv = styled.div`

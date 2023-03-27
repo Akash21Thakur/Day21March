@@ -65,7 +65,7 @@ homeVideosStore.fetchGamingVideoList();
     },[])
     return (
       <>
-        <Wrapper>
+        <Wrapper val={homeVideosStore.showDrawerList}>
           <PageHeader text="Gaming" />
           <GamingVideosContaniner>
             {/* {homeVideosStore.} */}

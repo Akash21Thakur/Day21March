@@ -85,7 +85,7 @@ const HomePageContent = inject("homeVideosStore")(
         {/* {console.log(homeVideosStore.searchedText)}
     <input type='search' value={homeVideosStore.searchedText} onChange={e => handleSearch(e)}/> */}
         {/* {console.log(homeVideosStore.homeVideosList)} */}
-        <Wrapper>
+        <Wrapper val={homeVideosStore.showDrawerList}>
           <Banner />
           <SearchWithIcon>
             <SearchVideos

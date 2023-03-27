@@ -1,21 +1,24 @@
 import styled from "styled-components";
-
-export const Wrapper = styled.div`
+interface Props{
+  val: boolean
+}
+export const Wrapper = styled.div<Props>`
     display: flex;
     flex-direction: column;
     background-color: ${({theme}) => theme.background_color};
     /* justify-content: center; */
     /* align-items: center; */
     width: 100%;
-    padding-left: 50px;
+    /* padding-left: 50px;
     padding-right: 50px;
     padding-top: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 30px; */
     box-sizing: border-box;
 
     @media (max-width: 576px) {
+      width:${(props) => props.val ? 'calc(100vw - 300px)' : '100%'};
+      
    padding:0px;
-   width:100%;
   }
 `
 
@@ -39,7 +42,10 @@ export const TrendingVideosContaniner= styled.div`
 
   @media (max-width: 576px) {
    padding:40px;
-   width:100%;
+   /* width:100%; */
+   display: flex;
+   flex-direction: column;
+   align-items: center;
   }
 
 `

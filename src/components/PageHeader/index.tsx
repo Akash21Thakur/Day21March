@@ -1,12 +1,20 @@
+import { inject, observer } from "mobx-react";
+import ThemeStore from "../../stores/themeStore";
 import { FireIcon, Header, IconContainer, PageTitle } from "./styleComponent";
 interface Props{
   text: string
 }
-const PageHeader = (props: Props) => {
-  // console.log(props);
+
+interface InjectedProps extends Props{
+  themeStore: ThemeStore
+}
+const PageHeader = inject("themeStore")(observer((props: Props) => {
+  console.log(props);
+  const {themeStore} = props as InjectedProps;
+
   return (
     <>
-    <Header>
+    <Header isDark={themeStore.isDark}>
       
       <IconContainer>
         {/* <i ></i> */}
@@ -16,7 +24,7 @@ const PageHeader = (props: Props) => {
     </Header>
     </>
   );
-};
+}))
 
 
 export default PageHeader;

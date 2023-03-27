@@ -14,9 +14,10 @@ export const ImageContainer = styled.img`
 `
 
 export const Title = styled.span`
-    
+  margin-top:8px;  
 `
 
 export const Views = styled.span`
-    
+    color: #6d7886;
+    margin-top:4px;
 `

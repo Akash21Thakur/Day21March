@@ -39,6 +39,7 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
+    padding: '0px'
     // background-color: 'none',
   },
 };
@@ -107,7 +108,7 @@ const TopNavBar = inject("themeStore","homeVideosStore")(
 
     return (
       <>
-        <Header>
+        <Header isDark={themeStore.isDark}>
           <IconContainer>
             <img src={currTheme ? DARK_THEME_LOGO : LIGHT_THEME_LOGO} />
           </IconContainer>
@@ -121,7 +122,7 @@ const TopNavBar = inject("themeStore","homeVideosStore")(
               }
               onClick={handleClick}
             />
-            <Drawer onClick={handleDrawer} className="fa-solid fa-list"/>
+            <Drawer  onClick={handleDrawer} className="fa-solid fa-list"/>
             <ProfileImageContainer
               className="profile-pic"
               src={WATCH_LOGO_DARK}

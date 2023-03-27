@@ -4,11 +4,11 @@ export const EachPageCont = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-top: 15px;
+  /* padding-top: 15px; */
   color: #fff;
   .active {
       text-decoration: none;
-      background-color: #cecbcb;
+      background-color: #d3cccc88;
       font-weight: bold;
       
     i {

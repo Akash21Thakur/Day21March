@@ -33,7 +33,7 @@ export const Wrapper = styled.div`
 export const HorizontalLine = styled.div`
   width: 100%;
   height: 3px;
-  background-color: black;
+  background-color: #6d7886;;
   margin-top: 20px;
 `;
 
@@ -54,13 +54,14 @@ export const ViewsLikeSaveDiv = styled.div`
   justify-content: space-between;
 
   @media (max-width: 576px) {
-    margin-top:6px;
-   flex-wrap: wrap;
+    margin-top: 6px;
+    flex-wrap: wrap;
   }
 `;
 export const ViewsPublishedDiv = styled.div`
   display: flex;
-  margin-top:8px;
+  margin-top: 8px;
+  color: #6d7886;
 `;
 
 export const ViewCount = styled.div``;
@@ -73,14 +74,13 @@ export const LikeDislikeSaveDiv = styled.div`
 
   @media (max-width: 576px) {
     margin-top: 6px;
-    width:100%;
+    width: 100%;
     justify-content: space-between;
-    
   }
 `;
 
-interface Props{
-    like: boolean
+interface Props {
+  like: boolean | null;
 }
 
 export const LikeDislikeSave = styled.div<Props>`
@@ -88,26 +88,31 @@ export const LikeDislikeSave = styled.div<Props>`
   padding-right: 16px;
   cursor: pointer;
   /* font-weight: 500; */
-  font-weight: ${(props: Props) => props.like ? 500 : 300};
-  color: ${(props: Props) => props.like ? 'blue' : ({theme}) => theme.color};
+  font-weight: ${(props: Props) => (props.like ? 500 : 300)};
+  color: ${(props: Props) =>
+    props.like ? "blue" : ({ theme }) => theme.color};
   i {
-    
     padding-right: 5px;
-    color: ${(props: Props) => props.like ? 'blue' : ({theme}) => theme.color};
-
+    color: ${(props: Props) =>
+      props.like ? "blue" : ({ theme }) => theme.color};
   }
-  /* color: ${props => props.color} */
-`
+  /* color: ${(props) => props.color} */
+`;
 export const Dislike = styled.div<Props>`
   display: flex;
   padding-right: 16px;
   cursor: pointer;
+  font-weight: ${(props: Props) => (props.like === false ? 500 : 300)};
+  color: ${(props: Props) =>
+    props.like === false ? "blue" : ({ theme }) => theme.color};
   i {
     padding-right: 5px;
+    color: ${(props: Props) =>
+      props.like  === false? "blue" : ({ theme }) => theme.color};
   }
-  color: ${(props: Props) => props.like ? 'blue' : 'black'}
-  /* color: ${props => props.color} */
-`
+  /* color: ${(props: Props) => (props.like === false ? "blue" : "black")} */
+  /* color: ${(props) => props.color} */
+`;
 export const Save = styled.div<Props>`
   display: flex;
   padding-right: 16px;
@@ -115,9 +120,9 @@ export const Save = styled.div<Props>`
   i {
     padding-right: 5px;
   }
-  color: ${(props: Props) => props.like ? 'blue' : 'black'}
-  /* color: ${props => props.color} */
-`
+  color: ${(props: Props) => (props.like ? "blue" : "black")};
+  /* color: ${(props) => props.color} */
+`;
 
 export const ChannelDescContainer = styled.div`
   display: flex;
@@ -142,9 +147,11 @@ export const ChannelName = styled.div`
 `;
 export const Subscriber = styled.div`
   margin-bottom: 8px;
+  color: #6d7886;
 `;
 export const VideoDescriptionDiv = styled.div`
-  display: flex;
+width:70%;
+  /* display: flex; */
 `;
 // export const Profile= styled.div`
 //     display: flex;

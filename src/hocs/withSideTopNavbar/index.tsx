@@ -20,7 +20,7 @@ const withSideTopNavBar = (WrapperComponent: React.ComponentType<any>) => {
         <TopNavBar />
         <MainContainer>
           <SideNavBar />
-          <WrapperComponent />
+          <WrapperComponent className='wrapper'/>
         </MainContainer>
       </>
     );

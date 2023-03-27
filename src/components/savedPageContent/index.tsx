@@ -60,7 +60,7 @@ const SavedVideosPageContent = inject("homeVideosStore")(
     }, []);
     return (
       <>
-        <Wrapper>
+        <Wrapper val={homeVideosStore.showDrawerList}>
           <PageHeader text="Saved Videos" />
           <TrendingVideosContaniner>
             {/* {homeVideosStore.} */}

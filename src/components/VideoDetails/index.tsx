@@ -37,12 +37,11 @@ import {
 } from "./styleComponent";
 
 interface Props {
-  
   videoId: string | undefined;
   // videoDetailsStore: VideoDetailsStore;
 }
 interface InheritedProps extends Props {
-  homeVideosStore: HomeVideosStore
+  homeVideosStore: HomeVideosStore;
 }
 const VideoDetails = inject(
   "videoDetailsStore",
@@ -50,10 +49,10 @@ const VideoDetails = inject(
 )(
   observer((props: Props) => {
     // const videoDetailsStore = props.videoDetailsStore as VideoDetailsStore;
-    const {homeVideosStore} = props as InheritedProps;
-    
+    const { homeVideosStore } = props as InheritedProps;
+
     let data: HomeVideoModel;
-   
+
     const handleLiked = () => {
       // console.log(data.toggleLiked)
       data.toggleLiked();
@@ -67,23 +66,19 @@ const VideoDetails = inject(
       data.toggleSaved();
     };
     useEffect(() => {
-
-     
       props.videoId && homeVideosStore.fetchVideoDetails(props.videoId);
-      console.log(props.videoId)
+      console.log(props.videoId);
     }, []);
-    console.log(homeVideosStore.videoDetailsData)
+    console.log(homeVideosStore.videoDetailsData);
     const renderVideoDetails = () => {
-      
-      
       data = homeVideosStore.videoDetailsData;
-      console.log(data)
+      console.log(data);
       // debugger
       return (
         <>
-        {/* <div>akash</div> */}
+          {/* <div>akash</div> */}
           {/* <div>details Page</div> */}
-           <Wrapper>
+          <Wrapper>
             <VideoPlayerContainer>
               <ReactPlayer
                 className="video-player"
@@ -104,30 +99,29 @@ const VideoDetails = inject(
                   <Icon className="fa-regular fa-thumbs-up" />
                   <div>Like</div>
                 </LikeDislikeSave>
-                <LikeDislikeSave
-                  onClick={handleDisliked}
-                  like={data.isDisliked}
-                >
-                  <Icon className="fa-regular fa-thumbs-down"/>
+                <Dislike onClick={handleDisliked} like={data.isLiked}>
+                  <Icon className="fa-regular fa-thumbs-down" />
                   <div>Dislike</div>
-                </LikeDislikeSave>
+                </Dislike>
                 <LikeDislikeSave onClick={handleSaved} like={data.isSaved}>
-                  <Icon className="fa-solid fa-list-check"/>
+                  <Icon className="fa-solid fa-list-check" />
                   <div>Save</div>
                 </LikeDislikeSave>
               </LikeDislikeSaveDiv>
             </ViewsLikeSaveDiv>
             <HorizontalLine />
-            <ChannelDescContainer> 
-              <Profile src={data.channel?.profileImageUrl}/>
+            <ChannelDescContainer>
+              <Profile src={data.channel?.profileImageUrl} />
               <ChannelDetails>
                 <ChannelName>{data.channel?.name}</ChannelName>
-                <Subscriber>{data.channel?.subscriberCount} subscribers</Subscriber>
+                <Subscriber>
+                  {data.channel?.subscriberCount} subscribers
+                </Subscriber>
                 <VideoDescriptionDiv>{data.description}</VideoDescriptionDiv>
               </ChannelDetails>
               {/* CHannel Desc */}
             </ChannelDescContainer>
-          </Wrapper> 
+          </Wrapper>
         </>
       );
     };
@@ -138,30 +132,27 @@ const VideoDetails = inject(
       return <div>Loading...</div>;
     };
 
-    
-
     const renderThings = () => {
       const apiStatus = homeVideosStore.apiStatusVideoDetail;
       // console.log(apiStatus)
       switch (apiStatus) {
         case ApiStatus.LOADING:
-         return <Loader />
-          
-          case ApiStatus.SUCESS:
-            // {console.log("Successs")}
-            return renderVideoDetails();
-          case ApiStatus.FAILURE:
-            return <FailureViewComponent />  
-            
-            default:
-            return <div>Video Details</div>;
-           
+          return <Loader />;
+
+        case ApiStatus.SUCESS:
+          // {console.log("Successs")}
+          return renderVideoDetails();
+        case ApiStatus.FAILURE:
+          return <FailureViewComponent />;
+
+        default:
+          return <div>Video Details</div>;
       }
     };
     return (
       <>
-      {/* <div>akash1</div> */}
-       { renderThings()}
+        {/* <div>akash1</div> */}
+        {renderThings()}
         {/* <div>akash</div> */}
         {/* {console.log("End")} */}
         {/* {homeVideosStore.apiStatusVideoDetail ? renderLoader() : renderVideoDetails()} */}

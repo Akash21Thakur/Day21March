@@ -43,7 +43,7 @@ class HomeVideosStore {
       homeVideosList: observable,
       trendingVideosList: observable,
       gamingVideosList: observable,
-      isLoading: observable,
+      // isLoading: observable,
       searchedText: observable,
       homeVideoListFn: computed,
       showBanner: observable,
@@ -86,6 +86,10 @@ class HomeVideosStore {
   }
 
   fetchGamingVideoList = async () => {
+
+    if(this.apiStatusGamingVideos===ApiStatus.SUCESS)
+        return;
+
     // this.isLoading = true;
     this.apiStatusGamingVideos=ApiStatus.LOADING;
     const token = Cookies.get("jwt_token");
@@ -121,6 +125,10 @@ class HomeVideosStore {
   };
 
   fetchTrendingVideoList = async () => {
+     
+    if(this.apiStatusTrendingVideos===ApiStatus.SUCESS)
+       return;
+
     // this.isLoading = true;
     this.apiStatusTrendingVideos=ApiStatus.LOADING;
     const token = Cookies.get("jwt_token");
@@ -158,6 +166,9 @@ class HomeVideosStore {
 
   fetchHomeVideoList = async () => {
     // this.isLoading = true;
+    if(this.apiStatusHomeVideos===ApiStatus.SUCESS)
+        return;
+
     this.apiStatusHomeVideos=ApiStatus.LOADING;
     const token = Cookies.get("jwt_token");
     // console.log(token);

@@ -10,8 +10,8 @@ import { ChannelType, VideoDetailChannelType } from "../homeChannelType";
   thumbnailUrl: string;
   viewCount: string;
   isSaved: boolean=false;
-  isLiked: boolean=false;
-  isDisliked: boolean=false;
+  isLiked: boolean | null=null;
+  // isDisliked: boolean=false;
 
   constructor(datas: BaseFetchedVideoDetails) {
     // console.log(datas.channel);
@@ -26,7 +26,7 @@ import { ChannelType, VideoDetailChannelType } from "../homeChannelType";
     makeObservable((this),{
       isSaved: observable,
       isLiked: observable,
-      isDisliked: observable,
+      // isDisliked: observable,
       toggleDisliked:action,
       toggleLiked: action,
       toggleSaved: action
@@ -39,17 +39,19 @@ import { ChannelType, VideoDetailChannelType } from "../homeChannelType";
   }
 
   toggleLiked(){
-    console.log("liked")
-     if(this.isDisliked)  
-        this.isDisliked=false;
-     this.isLiked=!this.isLiked;   
+    // console.log("liked")
+     if(this.isLiked===null || this.isLiked===false)   
+        this.isLiked=true;
+     else
+        this.isLiked=null;   
   }
 
   toggleDisliked(){
     console.log("disliked")
-    if(this.isLiked)  
-       this.isLiked=false;
-    this.isDisliked=!this.isDisliked;   
+    if(this.isLiked===null || this.isLiked===true)   
+        this.isLiked=false;
+     else
+        this.isLiked=null;    
  }
 } 
 

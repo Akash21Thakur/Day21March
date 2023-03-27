@@ -15,6 +15,7 @@ import GamingPage from './routes/GamingPage';
 import TrendingPage from './routes/TrendingPage';
 import ThemeStore from './stores/themeStore';
 import VideoPlayerDiv from './routes/VideoPlayerDiv';
+import PageNotFound from './routes/PageNotFound';
 
 interface InjectedProps {
   themeStore: ThemeStore;
@@ -56,6 +57,7 @@ const App: React.FC = inject('themeStore')(observer(((props) => {
               <Route path="/gaming" element={<GamingPage />}/>
               <Route path="/saved-videos" element={<SavedVideosPage />}/>
               <Route path='/videos/:id' element={<VideoPlayerDiv/>} />
+              <Route path="*" element={<PageNotFound />} />
               {/* </Route> */}
                 
               
