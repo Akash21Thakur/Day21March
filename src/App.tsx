@@ -60,7 +60,7 @@ const App: React.FC = inject('themeStore')(observer(((props) => {
               <Route path="*" element={<PageNotFound />} />
               {/* </Route> */}
                 
-              
+              {/* <Redirect to="/" /> */}
               {/* <Route path='/team-matches/:id' element={<TeamMatches/>} /> */}
            </Routes>  
           {/* <Home/> */}

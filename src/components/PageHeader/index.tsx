@@ -20,7 +20,10 @@ const PageHeader = inject("themeStore")(observer((props: Props) => {
         {/* <i ></i> */}
         <FireIcon className="fa-solid fa-fire"></FireIcon>
       </IconContainer>
+      <div className="cont-div">
+
       <PageTitle>{props.text}</PageTitle>
+      </div>
     </Header>
     </>
   );

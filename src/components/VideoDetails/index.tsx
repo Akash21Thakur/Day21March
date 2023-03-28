@@ -78,7 +78,7 @@ const VideoDetails = inject(
         <>
           {/* <div>akash</div> */}
           {/* <div>details Page</div> */}
-          <Wrapper>
+          <Wrapper val={homeVideosStore.showDrawerList}> 
             <VideoPlayerContainer>
               <ReactPlayer
                 className="video-player"

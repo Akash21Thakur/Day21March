@@ -12,13 +12,13 @@ export const SideNavBarDiv = styled.div<Props>`
   background-color: ${(props) => !props.isDark ? '#fff' : '#3b3a3a7f'};
   /* padding: 12px; */
 
-  @media ((max-width: 992px) and  (min-width: 576px)) {
+  @media ((max-width: 992px) and  (min-width: 720px)) {
     
     /* font-size: 16px; */
     /* width: 180px; */
 }
 
-@media (max-width: 576px) {
+@media (max-width: 720px) {
   /* position: absolute; */
   z-index: 200;
   width:${props => props.val ?  '300px' : '0px' };

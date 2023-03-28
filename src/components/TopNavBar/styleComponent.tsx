@@ -40,14 +40,14 @@ export const Drawer = styled.i`
   display: none;
   font-size: 25px;
 
-  @media (max-width: 576px) {
+  @media (max-width: 720px) {
    display: block;
   }
   /* font-weight: 500; */
 `;
 
 export const ProfileImageContainer = styled.img`
-   @media (max-width: 576px) {
+   @media (max-width: 720px) {
    display: none;
   }
 `;

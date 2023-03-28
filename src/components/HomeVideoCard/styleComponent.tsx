@@ -11,7 +11,7 @@ export const VideoCardMainDiv= styled.div`
     padding-left: 0px;
     text-decoration: none;
 
-    @media (max-width: 576px) {
+    @media (max-width: 720px) {
     /* flex-direction: column; */
     width:250px;
     height: auto;
@@ -47,7 +47,7 @@ export const VideoChannelDetails= styled.div`
 `
 
 export const VideoTitle= styled.div`
-    @media (max-width: 576px) {
+    @media (max-width: 720px) {
     /* flex-direction: column; */
     margin-bottom: 6px;
   }

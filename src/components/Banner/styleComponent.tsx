@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
     background-size: 100% 100%;
     margin-bottom: 60px;
 
-    @media (max-width: 576px) {
+    @media (max-width: 720px) {
    padding:15px;
    width:100%;
   }
@@ -39,14 +39,14 @@ export const BuyNextParaContainer = styled.div`
     font-size: 20px;
     width: 400px;
 
-    @media ((max-width: 992px) and  (min-width: 576px)) {
+    @media ((max-width: 992px) and  (min-width: 720px)) {
     
         font-size: 16px;
         width: 220px;
   }
 
 
-    @media (max-width: 576px) {
+    @media (max-width: 720px) {
     width:200px;
   }
 `

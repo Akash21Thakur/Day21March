@@ -13,7 +13,10 @@ const withSideTopNavBar = (WrapperComponent: React.ComponentType<any>) => {
     // }
     const jwtToken = Cookies.get("jwt_token");
     if (jwtToken === undefined) {
-      return <Navigate to="/login" />;
+      // console.log(JSON.stringify(window.location));
+      // console.log("Not Logged In");
+     return <Navigate to="/login" />
+     
     }
     return (
       <>

@@ -15,7 +15,7 @@ export const Wrapper = styled.div<Props>`
     padding-bottom: 30px; */
     box-sizing: border-box;
 
-    @media (max-width: 576px) {
+    @media (max-width: 720px) {
       width:${(props) => props.val ? 'calc(100vw - 300px)' : '100%'};
       
    padding:0px;
@@ -40,7 +40,7 @@ export const TrendingVideosContaniner= styled.div`
       
   }
 
-  @media (max-width: 576px) {
+  @media (max-width: 720px) {
    padding:40px;
    /* width:100%; */
    display: flex;

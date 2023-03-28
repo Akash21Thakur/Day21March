@@ -9,8 +9,9 @@ export const Wrapper = styled.div<Props>`
   flex-direction: column;
   overflow-y: auto;
 
-  @media (max-width: 576px) {
+  @media (max-width: 720px) {
     /* flex-direction: column; */
+    /* justify-content: center; */
     width:${(props) => props.val ? 'calc(100vw - 300px)' : '100%'};
     padding-left: 0px;
     padding-right: 0px;
@@ -30,7 +31,7 @@ export const HomeVideosMainDiv = styled.div`
     text-decoration: none;
   }
 
-  @media (max-width: 576px) {
+  @media (max-width: 720px) {
     /* flex-direction: column; */
     justify-content: center;
 

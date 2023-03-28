@@ -11,6 +11,10 @@ align-items: center;
 background-color: ${props => props.isDark ? '#5c5a5a94' : '#e4e4e4ae'};
 padding: 30px;
 margin-bottom: 18px;
+
+/* .cont-div{
+    width:300px;
+} */
 `
 
 export const FireIcon = styled.i`
@@ -19,7 +23,7 @@ font-size: 30px;
 `
 
 export const PageTitle = styled.h1`
-
+ width:100%;
 `
 
 export const IconContainer = styled.div`

@@ -1,6 +1,9 @@
 import styled from "styled-components";
+interface Props1{
+  val: boolean
+}
+export const Wrapper = styled.div<Props1>`
 
-export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -21,6 +24,12 @@ export const Wrapper = styled.div`
     height: 3px;
     margin-top: 15px;
     background-color: black;
+  }
+
+  @media (max-width: 720px) {
+      width:${(props) => props.val ? 'calc(100vw - 300px)' : '100%'};
+      
+   /* padding:0px; */
   }
 `;
 
@@ -53,7 +62,7 @@ export const ViewsLikeSaveDiv = styled.div`
   width: 100%;
   justify-content: space-between;
 
-  @media (max-width: 576px) {
+  @media (max-width: 720px) {
     margin-top: 6px;
     flex-wrap: wrap;
   }
@@ -72,7 +81,7 @@ export const PublishedAt = styled.div`
 export const LikeDislikeSaveDiv = styled.div`
   display: flex;
 
-  @media (max-width: 576px) {
+  @media (max-width: 720px) {
     margin-top: 6px;
     width: 100%;
     justify-content: space-between;

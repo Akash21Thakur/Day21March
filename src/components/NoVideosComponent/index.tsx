@@ -1,6 +1,7 @@
 import { inject } from "mobx-react";
 import { useNavigate } from "react-router";
 import { NO_SEARCH } from "../../constants/logos";
+import HomeVideosStore from "../../stores/homeVideoStore";
 import {
   NoSearchImageContainer,
   NoSearchRes,
@@ -9,9 +10,20 @@ import {
   Wrapper,
 } from "./styleComponent";
 
-const NoVideosComponent = () => {
+interface Props{
+  
+}
+
+interface InjectedProps extends Props{
+  homeVideosStore: HomeVideosStore
+}
+
+const NoVideosComponent = inject('homeVideosStore')((props: Props) => {
+   
+  const {homeVideosStore} = props as InjectedProps;
+
   const refreshPage = () => {
-    window.location.reload();
+    homeVideosStore.updateSearchedText('');
   };
 
   return (
@@ -26,6 +38,6 @@ const NoVideosComponent = () => {
       </Wrapper>
     </>
   );
-};
+});
 
 export default NoVideosComponent;

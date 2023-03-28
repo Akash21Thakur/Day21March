@@ -97,6 +97,9 @@ const TopNavBar = inject("themeStore","homeVideosStore")(
       // setIsOpen(true)
 
       Cookies.remove("jwt_token");
+      localStorage.setItem('previousLocation', JSON.stringify(window.location));
+        //  homeVideosStore.setUrlHistory(JSON.stringify(window.location))
+        // Cookies.set('previousLocation',JSON.stringify(window.location),{expires: 30})
       navigate("/login");
     };
 
@@ -133,6 +136,7 @@ const TopNavBar = inject("themeStore","homeVideosStore")(
            style={customStyles}
            contentLabel="onRequestClose Example"
            onRequestClose={closeModal}
+           ariaHideApp={false}
           //  className="Modal"
           //  overlayClassName="Overlay"
         >

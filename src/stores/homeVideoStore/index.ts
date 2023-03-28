@@ -1,5 +1,6 @@
 import Cookies from "js-cookie";
 import { action, computed, makeObservable, observable, toJS } from "mobx";
+import { threadId } from "worker_threads";
 import {
   GAMING_VIDEOS_API_URL,
   HOME_VIDEOS_API_URL,
@@ -12,7 +13,7 @@ import {
   ApiStatus,
   FetchedHomeDetails,
 } from "../types";
-import { VideoDetailsType } from "../videoDetailsStore";
+// import { VideoDetailsType } from "../videoDetailsStore";
 
 class HomeVideosStore {
   homeVideosList!: HomeVideoModel[];
@@ -31,6 +32,7 @@ class HomeVideosStore {
   finalFetchedList: HomeVideoModel[]=[];
   apiStatusVideoDetail: ApiStatus;
   showDrawerList: boolean=false;
+  urlHistory: string='';
   
   // savedVideoList: HomeVideoModel[] = [];
 
@@ -40,9 +42,9 @@ class HomeVideosStore {
     this.apiStatusGamingVideos = ApiStatus.INITIAL;
     this.apiStatusTrendingVideos = ApiStatus.INITIAL;
     makeObservable(this, {
-      homeVideosList: observable,
-      trendingVideosList: observable,
-      gamingVideosList: observable,
+      // homeVideosList: observable,
+      // trendingVideosList: observable,
+      // gamingVideosList: observable,
       // isLoading: observable,
       searchedText: observable,
       homeVideoListFn: computed,
@@ -62,6 +64,8 @@ class HomeVideosStore {
       completeVideoList: computed,
       savedVideoList: computed,
       fetchVideoDetails: action,
+      // urlHistory: observable,
+      // setUrlHistory: action
       // videoList: observable
     });
     // console.log("akash");
@@ -71,6 +75,10 @@ class HomeVideosStore {
 
     // console.log(this.videoList);
     // this.filteredList=this.homeVideosList
+  }
+
+  setUrlHistory(url: string){
+    this.urlHistory=url;
   }
 
   toggleDrawerView = () =>{
@@ -109,7 +117,7 @@ class HomeVideosStore {
         this.gamingVideosList = data.videos.map(
           (each: FetchedHomeDetails) => new HomeVideoModel(each)
         );
-        console.log(toJS(this.gamingVideosList));
+        // console.log(toJS(this.gamingVideosList));
         this.apiStatusGamingVideos=ApiStatus.SUCESS;
         // this.isLoading = false;
         // new HomeVideoModel(data.videos)

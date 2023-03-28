@@ -4,7 +4,7 @@ export const NoSavedVideosContainer = styled.img`
     width: 400px;
     height:300px;
 
-    @media (max-width: 576px) {
+    @media (max-width: 720px) {
     /* flex-direction: column; */
     width:300px;
     height:225px;
@@ -22,7 +22,7 @@ align-items: center;
 `
 
 export const NotFound = styled.h1`
-@media (max-width: 576px) {
+@media (max-width: 720px) {
     /* flex-direction: column; */
     font-size: 25px;
   }`

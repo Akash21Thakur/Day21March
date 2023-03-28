@@ -5,13 +5,13 @@ export const Wrapper = styled.div`
   margin-bottom: 20px;
   /* flex-wrap: wrap; */
   .channel-details {
-    width: 500px;
+    width: 75%;
   }
   h1 {
-    font-size: 25px;
+    font-size: 20px;
   }
 
-  @media ((max-width: 992px) and  (min-width: 576px)) {
+  @media ((max-width: 992px) and  (min-width: 720px)) {
 
     i {
       
@@ -20,21 +20,21 @@ export const Wrapper = styled.div`
       width: 300px;
     }
     h1 {
-      font-size: 16px;
+      font-size: 20px;
       /* color: red; */
     }
     /* font-size: 16px;
         width: 220px; */
   }
 
-  @media (max-width: 576px) {
+  @media (max-width: 720px) {
     flex-wrap: wrap;
     padding: 0px;
     margin-bottom: 40px;
 
     h1 {
       margin-top: 4px;
-      font-size: 15px;
+      font-size: 20px;
     }
 
     .channel-details {
@@ -49,9 +49,9 @@ export const ImageContainer = styled.img`
   width: 320px;
   height: 180px;
 
-  @media ((max-width: 992px) and  (min-width: 576px)) {
-    width: 150px;
-      height:100px;
+  @media ((max-width: 992px) and  (min-width: 720px)) {
+    width: 200px;
+      height:120px;
   }
 `;
 
@@ -67,7 +67,7 @@ export const Title = styled.h1`
 
 export const ChannelName = styled.div`
 color: #6d7886;
-@media (max-width: 576px) {
+@media (max-width: 720px) {
     /* flex-direction: column; */
     margin-bottom: 6px;
   }`;
