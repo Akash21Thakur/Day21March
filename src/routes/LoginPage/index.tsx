@@ -21,7 +21,7 @@ const LoginPage = inject(
   "homeVideosStore"
 )(
   observer((props: Props) => {
-    const { themeStore, homeVideosStore } = props as InjectedProps;
+    const { themeStore} = props as InjectedProps;
 
     const [userDetails, setDetails] = useState({
       username: "",
@@ -112,10 +112,11 @@ const LoginPage = inject(
       }));
     };
 
-    const jwtToken = Cookies.get("jwt_token");
-    if (jwtToken !== undefined) {
-      return <Navigate to="/" />;
-    }
+    // const jwtToken = Cookies.get("jwt_token");
+    // if (jwtToken !== undefined) {
+    //   console.log("From Login")
+    //   return <Navigate to="/" />;
+    // }
 
     //    useEffect(()=>{
     //     console.log(userDetails)

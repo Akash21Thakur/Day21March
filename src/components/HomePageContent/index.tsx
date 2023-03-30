@@ -97,6 +97,7 @@ const HomePageContent = inject("homeVideosStore")(
               <SearchIcon className="fa-solid fa-magnifying-glass" />
             </SearchIconDiv>
           </SearchWithIcon>
+          
 
           <HomeVideosMainDiv>{renderThings()}</HomeVideosMainDiv>
         </Wrapper>

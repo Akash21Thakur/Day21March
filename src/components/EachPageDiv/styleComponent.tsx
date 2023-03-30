@@ -20,7 +20,7 @@ export const EachPageCont = styled.div`
     
     color: ${({theme}) => theme.color};
     text-decoration: inherit;
-
+    padding: 6px;
   }
 
   `;

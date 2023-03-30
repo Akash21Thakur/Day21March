@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 import { EachPageCont, Icon, IconTextDiv, PageName } from "./styleComponent";
 
 const EachPageDiv = () => {
+
+  
   return (
     <>
       <EachPageCont>
