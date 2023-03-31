@@ -5,11 +5,7 @@ import { Navigate, useNavigate } from "react-router";
 import Modal from "react-modal";
 // import {use}
 // import { ThemeContext1 } from "../../App";
-import {
-  DARK_THEME_LOGO,
-  LIGHT_THEME_LOGO,
-  WATCH_LOGO_DARK,
-} from "../../constants/logos";
+
 import ThemeStore from "../../stores/themeStore";
 import { Icon } from "../EachPageDiv/styleComponent";
 // import themeStore from "../../stores/themeStore";
@@ -30,6 +26,7 @@ import {
 import ReactModal from "react-modal";
 import { CrossButton } from "../Banner/styleComponent";
 import HomeVideosStore from "../../stores/homeVideoStore";
+import { DARK_THEME_LOGO, LIGHT_THEME_LOGO, WATCH_LOGO_DARK } from "../../constants/ImageUrlConstant";
 
 const customStyles = {
   content: {

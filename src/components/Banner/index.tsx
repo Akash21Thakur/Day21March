@@ -1,7 +1,8 @@
 import { inject, observer } from "mobx-react";
 import { shallowEnhancer } from "mobx/dist/internal";
 import { useState } from "react";
-import { DARK_THEME_LOGO, LIGHT_THEME_LOGO } from "../../constants/logos";
+import { LIGHT_THEME_LOGO } from "../../constants/ImageUrlConstant";
+// import { DARK_THEME_LOGO, LIGHT_THEME_LOGO } from "../../constants/logos";
 import HomeVideosStore from "../../stores/homeVideoStore";
 import {
   BuyNextParaContainer,

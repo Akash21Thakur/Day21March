@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { BANNER_BG_IMG } from "../../constants/logos";
+import { BANNER_BG_IMG } from "../../constants/ImageUrlConstant";
+// import { BANNER_BG_IMG } from "../../constants/logos";
 
 export const Wrapper = styled.div`
     display: flex;

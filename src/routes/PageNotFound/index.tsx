@@ -1,6 +1,7 @@
 import { inject, observer } from "mobx-react";
 import { NoSavedVideosContainer, NotFound, NotFoundDesc, Wrapper } from "../../components/NoSavedVideos/styleComponent";
-import { NOT_FOUND_DARK, NOT_FOUND_LIGHT, NO_SAVED } from "../../constants/logos";
+import { NOT_FOUND_DARK, NOT_FOUND_LIGHT } from "../../constants/ImageUrlConstant";
+// import { NOT_FOUND_DARK, NOT_FOUND_LIGHT, NO_SAVED } from "../../constants/logos";
 import withSideTopNavBar from "../../hocs/withSideTopNavbar"
 import ThemeStore from "../../stores/themeStore";
 interface Props{}

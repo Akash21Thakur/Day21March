@@ -1,4 +1,5 @@
-import { FB_LOGO, LN_LOGO, TW_LOGO } from "../../constants/logos";
+// import { FB_LOGO, LN_LOGO, TW_LOGO } from "../../constants/logos";
+import { FB_LOGO, LN_LOGO, TW_LOGO } from "../../constants/ImageUrlConstant";
 import { MediaHandles, ContactCont, ImageContainer, ContactDescConatiner, ContactUsDiv } from "./styleComponent";
 
 const ContactDiv = () => {

@@ -1,6 +1,7 @@
 import { inject } from "mobx-react";
 import { useNavigate } from "react-router";
-import { FAILURE_LIGHT } from "../../constants/logos";
+import { FAILURE_LIGHT } from "../../constants/ImageUrlConstant";
+// import { FAILURE_LIGHT } from "../../constants/logos";
 import { NoSearchImageContainer, NoSearchRes, RetryButton, TryDiffContainer, Wrapper } from "../NoVideosComponent/styleComponent";
 import { PleaseTry } from "./styleComponent";
 

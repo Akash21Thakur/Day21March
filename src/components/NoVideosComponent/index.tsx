@@ -1,6 +1,7 @@
 import { inject } from "mobx-react";
 import { useNavigate } from "react-router";
-import { NO_SEARCH } from "../../constants/logos";
+import { NO_SEARCH } from "../../constants/ImageUrlConstant";
+// import { NO_SEARCH } from "../../constants/logos";
 import HomeVideosStore from "../../stores/homeVideoStore";
 import {
   NoSearchImageContainer,

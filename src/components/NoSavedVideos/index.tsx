@@ -1,4 +1,5 @@
-import { NO_SAVED } from "../../constants/logos";
+// import { NO_SAVED } from "../../constants/logos";
+import { NO_SAVED } from "../../constants/ImageUrlConstant";
 import { NoSavedVideosContainer, NotFound, NotFoundDesc, Wrapper } from "./styleComponent";
 
 const NoSavedVideos = () => {

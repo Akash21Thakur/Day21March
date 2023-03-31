@@ -18,7 +18,7 @@ interface InjectedProps extends Props{
 const GamingVideoCard = inject("homeVideosStore")((props: Props) => {
     // const {homeVideosStore} = props.data;
     // console.log(props.data);
-    const {data}=props;
+    const {data}=props as InjectedProps;
   return (
     <>
     <Link to={`/videos/${data.id}`} className='link'>
