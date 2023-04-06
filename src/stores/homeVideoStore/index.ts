@@ -6,7 +6,13 @@ import {
   TRENDING_VIDEOS_API_URL,
   HOME_VIDEOS_API_URL,
 } from "../../constants/ApiUrlConstants";
-import { fetchData } from "../../service/apiService.api";
+import { GamingVideosListServiceApi } from "../../service/GamingVideosListService/index.api";
+import { HomeVideosListServiceApi } from "../../service/homeVideosListService/index.api";
+import { HomeVideosListServiceFixture } from "../../service/homeVideosListService/index.fixture";
+import { TrendingVideosListServiceApi } from "../../service/TrendingVideosListService/index.api";
+import { TrendingVideosListServiceFixture } from "../../service/TrendingVideosListService/index.fixture";
+import { VideoDetailsPageServiceApi } from "../../service/VideoDetailsPageService/index.api";
+import { VideoDetailsPageServiceFixture } from "../../service/VideoDetailsPageService/index.fixture";
 
 import { BaseVideoModel, HomeVideoModel } from "../model/homeVideoModel";
 // import HomeVideoModel from "../model/homeVideoModel";
@@ -106,7 +112,8 @@ class HomeVideosStore {
     };
 
     try {
-      const response = await fetchData(GAMING_VIDEOS_API_URL, option);
+      const obj = new GamingVideosListServiceApi();
+      const response = await obj.getGamingVideosList();
       const data = await response.json();
       if (response.ok) {
         const temp = data.videos;
@@ -139,7 +146,9 @@ class HomeVideosStore {
     };
 
     try {
-      const response = await fetchData(TRENDING_VIDEOS_API_URL, option);
+      // const obj =new TrendingVideosListServiceFixture();
+      const obj =new TrendingVideosListServiceApi();
+      const response = await obj.getTrendingVideosListService();
       const data = await response.json();
       if (response.ok) {
         this.trendingVideosList = data.videos.map(
@@ -170,7 +179,9 @@ class HomeVideosStore {
       method: "GET",
     };
     try {
-      const response = await fetchData(HOME_VIDEOS_API_URL, option);
+      // const obj=new HomeVideosListServiceFixture();
+      const obj=new HomeVideosListServiceApi();
+      const response = await obj.getHomeVideosList();
       const data = await response.json();
       if (response.ok) {
         this.homeVideosList = data.videos.map(
@@ -192,10 +203,9 @@ class HomeVideosStore {
     this.apiStatusVideoDetail = ApiStatus.LOADING;
   
     console.log(props);
-    let detailedData = {};
+   
     let flag = false;
-    console.log(this.finalFetchedList);
-    console.log(props);
+   
     // let each: HomeVideoModel;
     for (let each of this.finalFetchedList) {
       if (each.id === props) {
@@ -223,7 +233,9 @@ class HomeVideosStore {
       };
       try {
         const url = `https://apis.ccbp.in/videos/${props}`;
-        const response = await fetchData(url, option);
+        const obj = new VideoDetailsPageServiceApi();
+        // const obj = new VideoDetailsPageServiceFixture();
+        const response = await obj.getVideoDetailsPageService(url);
         const data = await response.json();
         if (response.ok) {
           // console.log(data);

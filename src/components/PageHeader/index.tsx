@@ -9,7 +9,7 @@ interface InjectedProps extends Props{
   themeStore: ThemeStore
 }
 const PageHeader = inject("themeStore")(observer((props: Props) => {
-  console.log(props);
+  // console.log(props);
   const {themeStore} = props as InjectedProps;
 
   return (

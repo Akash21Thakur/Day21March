@@ -1,6 +1,5 @@
 import { inject, observer } from "mobx-react";
 import { useEffect } from "react";
-import { HomeVideoDummyData } from "../../fixtures/homeVideoFixture";
 // import { MainContainer } from "../../routes/HomePage/styleComponents";
 import HomeVideosStore from "../../stores/homeVideoStore";
 import { HomeVideoModel } from "../../stores/model/homeVideoModel";

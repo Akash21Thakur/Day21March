@@ -48,6 +48,7 @@ const App: React.FC = inject('themeStore')(observer(((props) => {
         <ThemeProvider theme={themeStore.isDark ? darkTheme : lightTheme}>
 
         <GlobalStyle />
+        
         <BrowserRouter> 
                 
            <Routes>        
